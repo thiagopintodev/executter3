@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 1.0.1'  # Build JSON APIs with ease. Read more: https://gith
 gem "simple_form", github: 'plataformatec/simple_form'
 gem 'hash_extension'
 gem 'validates_email_format_of'
+gem 'bcrypt-ruby'
 
 
 # Gems used only for assets and not required
@@ -31,7 +32,6 @@ end
 
 group :development, :test do
   gem 'cucumber-rails', :require => false
-  gem "cucumber-rails-training-wheels"
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
   #webrat
