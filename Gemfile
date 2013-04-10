@@ -27,3 +27,13 @@ end
 group :production do
   gem 'unicorn'
 end
+
+
+group :development, :test do
+  gem 'cucumber-rails', :require => false
+  gem "cucumber-rails-training-wheels"
+  # database_cleaner is not required, but highly recommended
+  gem 'database_cleaner'
+  #webrat
+  gem 'webrat'
+end
