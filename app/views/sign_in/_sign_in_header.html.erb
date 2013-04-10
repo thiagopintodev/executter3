@@ -1,0 +1,18 @@
+<section id="sign_in_header">
+<%= simple_form_for(@new_user || User.new, url: sign_in_path, method: :post, html: {class: 'form-horizontal' }) do |f| %>
+  <%= hidden_field_tag :return_url, params[:return_url] %>
+  <div class="form-inputs">
+    
+    <% if Rails.env.development? %>
+    <%= f.input :email, collection: User.pluck(:email) %>
+    <% else %>
+    <%= f.input :email %>
+    <% end %>
+    <%= f.input :password, as: :password %>
+
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, 'Connect' %>
+  </div>
+<% end %>
+</section>

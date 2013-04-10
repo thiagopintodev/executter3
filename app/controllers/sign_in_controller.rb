@@ -2,15 +2,15 @@ class SignInController < ApplicationController
 
   # GET /sign_in
   def index
-    @user = User.new
+    @new_user = User.new
   end
 
   # POST /sign_ip
   def authenticate
-    @user = User.sign_in(params.user.email, params.user.password)
+    @new_user = User.sign_in(params.user.email, params.user.password)
 
-    if @user.authenticated?
-      set_current_user @user
+    if @new_user.authenticated?
+      set_current_user @new_user
       r = params[:return_url]
       r = home_path if r.blank?
       redirect_to r, notice: 'You Have Signed In.'

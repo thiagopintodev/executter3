@@ -8,6 +8,8 @@
 </head>
 <body>
 
+<%= render '/sign_in/sign_in_header' if me.nil? %>
+
 <%= notice %>
 
 <%= yield %>
