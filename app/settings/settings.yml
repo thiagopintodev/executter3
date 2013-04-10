@@ -1,0 +1,23 @@
+defaults: &defaults
+  host: localhost:3000
+  facebook:
+    app_key: '274790155904059'
+    secret: 'aa3dc1b647378b4fdd096234751afc51'
+    options: {scope: 'user_likes,user_birthday,user_location,user_relationships,friends_birthday,friends_likes,friends_interests,email,publish_actions'}
+  twitter:
+    consumer_key: 'Wmg5IdN6FY8692YIO7whJA'
+    consumer_secret: 'q0SiLioJ2e7Ym8mFpea3icTZVnbSD1A9Izw23JMD4A'
+
+development:
+  <<: *defaults
+
+test: &test
+  <<: *defaults
+  host: test.host
+
+production:
+  <<: *defaults
+  host: production.host
+
+cucumber:
+  <<: *test
