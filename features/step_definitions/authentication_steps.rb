@@ -18,8 +18,8 @@ Given /^I am a user$/ do
 
   steps %{ 
     Given the following user records
-      | first_name  | last_name | username | email          | password |
-      | James       | Pinto     | bob      | #{email}       | #{password}  |
+      | first_name  | last_name | username   | email          | password |
+      | James       | Pinto     | jamespinto | #{email}       | #{password}  |
   }
 
   # cucumber requires all step calls to be a Given :(
