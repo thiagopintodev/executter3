@@ -12,9 +12,7 @@ Ex3::Application.routes.draw do
   root to: "sign_in#index"
 
   #must be last
-  resources :sites, only: :show, path: '' do
-    member do
-      
-    end
+  scope ":site_id", as: :site do
+    get '' => "sites#show"
   end
 end

@@ -14,17 +14,14 @@ class CreateSites < ActiveRecord::Migration
 
     u_count = User.count
     i = 0
-    #User.transaction do
-      User.find_each do |user|
-        uname = user.attributes['username']
-        puts "#{i+=1} / #{u_count} | @#{uname}"
-        while not user.create_site(permalink: uname).persisted?
-          uname = "#{uname}#{rand(9999)}"
-        end
+    User.find_each do |user|
+      uname = user.attributes['username']
+      puts "#{i+=1} / #{u_count} | @#{uname}"
+      while not user.create_site(permalink: uname).persisted?
+        uname = "#{uname}#{rand(9999)}"
       end
-    #end
+    end
     remove_column :users, :username
-    #raise 'yay'
   end
 
   def down
