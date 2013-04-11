@@ -8,7 +8,7 @@ Feature: Sign In Header
     When I go to the home page
     Then I should see the selector "#sign_in_header"
 
-Scenario: Hides to user
-  Given I am a user
-  When I go to the home page
-  Then I should not see the selector "#sign_in_header"
+  Scenario: Hides to user
+    Given I am a user
+    When I go to the home page
+    Then I should not see the selector "#sign_in_header"

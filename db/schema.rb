@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130208092541) do
+ActiveRecord::Schema.define(version: 20130410223231) do
 
   create_table "cities", force: true do |t|
     t.integer  "city_base_id"
@@ -178,6 +178,18 @@ ActiveRecord::Schema.define(version: 20130208092541) do
   add_index "relations", ["user_id", "user2_id", "is_followed"], name: "index_relations_on_user_id_and_user2_id_and_is_followed"
   add_index "relations", ["user_id", "user2_id", "is_follower"], name: "index_relations_on_user_id_and_user2_id_and_is_follower"
 
+  create_table "sites", force: true do |t|
+    t.string   "owner_type"
+    t.integer  "owner_id"
+    t.string   "permalink"
+    t.string   "downcased"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sites", ["owner_type", "owner_id"], name: "index_sites_on_owner_type_and_owner_id"
+  add_index "sites", ["permalink"], name: "index_sites_on_permalink"
+
   create_table "smiles", force: true do |t|
     t.string   "key"
     t.boolean  "is_visible",         default: true
@@ -249,7 +261,6 @@ ActiveRecord::Schema.define(version: 20130208092541) do
 
   create_table "users", force: true do |t|
     t.string   "email"
-    t.string   "username"
     t.boolean  "email_confirmed",        default: false
     t.boolean  "username_confirmed",     default: false
     t.string   "password_digest"
@@ -280,7 +291,5 @@ ActiveRecord::Schema.define(version: 20130208092541) do
 
   add_index "users", ["email"], name: "index_users_on_email"
   add_index "users", ["id", "email"], name: "index_users_on_id_and_email"
-  add_index "users", ["id", "username"], name: "index_users_on_id_and_username"
-  add_index "users", ["username"], name: "index_users_on_username"
 
 end

@@ -10,4 +10,11 @@ Ex3::Application.routes.draw do
   post "sign_in"  => "sign_in#authenticate"
 
   root to: "sign_in#index"
+
+  #must be last
+  resources :sites, only: :show, path: '' do
+    member do
+      
+    end
+  end
 end
