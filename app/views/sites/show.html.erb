@@ -8,6 +8,12 @@
   <%= @site.at_permalink %>
 </p>
 
+<section id="relations">
+  <p><%= @site.followings.count %> followings</p>
+  <p><%= @site.followers.count %> followers</p>
+  <p><%= @site.friends.count %> friends</p>
+</section>
+
 <h1>posts by <%= @site.at_permalink %> (<%= @site.owner.full_name %>)</h1>
 <section id="posts">
   <% @posts.each do |post| %>

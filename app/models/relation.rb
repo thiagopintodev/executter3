@@ -6,3 +6,6 @@ class Relation < ActiveRecord::Base
   #the one who was followed
   belongs_to :following,  class_name: "Site", foreign_key: "following_id"
 end
+
+
+#TODO: remove column user_id

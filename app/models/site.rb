@@ -3,13 +3,15 @@ class Site < ActiveRecord::Base
   belongs_to :owner, polymorphic: true
 
   has_many :posts
-  has_many :site_followers,  class_name: "Relation", foreign_key: "follower_id"
-  has_many :site_followings, class_name: "Relation", foreign_key: "following_id"
-
+  has_many :followers,
+            class_name: "Relation", foreign_key: "follower_id"
+  has_many :followings,
+            class_name: "Relation", foreign_key: "following_id"
+  has_many :friends, -> { where is_friend: true },
+            class_name: "Relation", foreign_key: "following_id"
 
   def followings_posts
-    #site_followings.map(&:+).map(&:posts)
-    site_ids = site_followings.pluck(:follower_id) + [id]
+    site_ids = followings.pluck(:follower_id) + [id]
     Post.where(site_id: site_ids)
   end
 
@@ -21,7 +23,7 @@ class Site < ActiveRecord::Base
             else raise "Follow argument has an unrecongnied type: #{other.class.name}"
             end
     
-    site_followings.where(follower_id: other.id).first_or_initialize.tap do |r|
+    followings.where(follower_id: other.id).first_or_initialize.tap do |r|
       r.is_active = true
       r.save!
     end

@@ -7,3 +7,5 @@ class Post < ActiveRecord::Base
   end
 
 end
+
+#TODO: remove column user_id

@@ -6,7 +6,7 @@ class AddSiteToPosts < ActiveRecord::Migration
 
     p_count = Post.count
     i = 0
-    Post.find_each do |r|
+    Post.find_each do |p|
     #Post.limit(500).each do |p|
       u = User.find p.attributes['user_id']
       s = u.site

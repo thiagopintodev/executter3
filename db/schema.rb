@@ -178,6 +178,7 @@ ActiveRecord::Schema.define(version: 20130411055543) do
     t.integer  "follower_id"
     t.integer  "following_id"
     t.boolean  "is_active",    default: false
+    t.boolean  "is_friend",    default: false
   end
 
   add_index "relations", ["follower_id"], name: "index_relations_on_follower_id"
