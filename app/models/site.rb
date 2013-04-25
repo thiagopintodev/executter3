@@ -3,18 +3,19 @@ class Site < ActiveRecord::Base
   belongs_to :owner, polymorphic: true
 
   has_many :posts
-  has_many :followers,
-            class_name: "Relation", foreign_key: "follower_id"
-  has_many :followings,
-            class_name: "Relation", foreign_key: "following_id"
-  has_many :friends, -> { where is_friend: true },
-            class_name: "Relation", foreign_key: "following_id"
+  has_many :followers
+  has_many :followings
 
+  #-> { where is_active: true },
+  #TODO: friends
+  
   def followings_posts
-    site_ids = followings.pluck(:follower_id) + [id]
+    site_ids = followings.pluck(:other_id) + [id]
     Post.where(site_id: site_ids)
   end
 
+  # this method is only used in test features, maybe should move to test logic
+  # however, can be useful for the console
   def follow!(other)
     other = case other.class.name
             when 'String'   then Site.find_it(other)
@@ -22,11 +23,7 @@ class Site < ActiveRecord::Base
             # when 'Site'     then raise "site"
             else raise "Follow argument has an unrecongnied type: #{other.class.name}"
             end
-    
-    followings.where(follower_id: other.id).first_or_initialize.tap do |r|
-      r.is_active = true
-      r.save!
-    end
+    Relation.follow! Relation.get_relations(self, other)
   end
 
 

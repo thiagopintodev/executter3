@@ -14,5 +14,7 @@ Ex3::Application.routes.draw do
   #must be last
   scope ":site_id", as: :site do
     get '' => "sites#show"
+    get 'follow' => "sites#follow"
+    get 'unfollow' => "sites#unfollow"
   end
 end

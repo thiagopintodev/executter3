@@ -4,7 +4,7 @@ Feature: Site Relations
   As a user
   I want to see a list of counters
 
-Scenario: Standard Scenario
+Scenario: Standard Scenario (ignoring friends)
   Given the sample users
     And I am a visitor
     And that @ned is following @cerci
@@ -14,5 +14,5 @@ Scenario: Standard Scenario
   Then  I should see "Eddard Stark"
     And I should see "1 followings"
     And I should see "2 followers"
-    And I should see "0 friends"
+    And I should not see "0 friends"
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130411055543) do
+ActiveRecord::Schema.define(version: 20130425212352) do
 
   create_table "cities", force: true do |t|
     t.integer  "city_base_id"
@@ -38,6 +38,26 @@ ActiveRecord::Schema.define(version: 20130411055543) do
 
   add_index "city_bases", ["data"], name: "index_city_bases_on_data"
   add_index "city_bases", ["label"], name: "index_city_bases_on_label"
+
+  create_table "followers", force: true do |t|
+    t.integer  "site_id"
+    t.integer  "other_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followers", ["other_id"], name: "index_followers_on_other_id"
+  add_index "followers", ["site_id"], name: "index_followers_on_site_id"
+
+  create_table "followings", force: true do |t|
+    t.integer  "site_id"
+    t.integer  "other_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "followings", ["other_id"], name: "index_followings_on_other_id"
+  add_index "followings", ["site_id"], name: "index_followings_on_site_id"
 
   create_table "invites", force: true do |t|
     t.integer  "user_id"
@@ -175,14 +195,8 @@ ActiveRecord::Schema.define(version: 20130411055543) do
     t.boolean  "is_followed"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "follower_id"
-    t.integer  "following_id"
-    t.boolean  "is_active",    default: false
-    t.boolean  "is_friend",    default: false
   end
 
-  add_index "relations", ["follower_id"], name: "index_relations_on_follower_id"
-  add_index "relations", ["following_id"], name: "index_relations_on_following_id"
   add_index "relations", ["user_id", "user2_id", "is_followed"], name: "index_relations_on_user_id_and_user2_id_and_is_followed"
   add_index "relations", ["user_id", "user2_id", "is_follower"], name: "index_relations_on_user_id_and_user2_id_and_is_follower"
 

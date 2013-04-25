@@ -11,7 +11,14 @@
 <section id="relations">
   <p><%= @site.followings.count %> followings</p>
   <p><%= @site.followers.count %> followers</p>
-  <p><%= @site.friends.count %> friends</p>
+  <hr />
+  <% if not me %>
+    <p><%= link_to "+ Follow #{@site.owner.full_name}", root_path %></p>
+  <% elsif @relations.am_follower %>
+    <p><%= link_to "- Unfollow #{@site.owner.full_name}", site_unfollow_path(@site) %></p>
+  <% else %>
+    <p><%= link_to "+ Follow #{@site.owner.full_name}", site_follow_path(@site) %></p>
+  <% end %>
 </section>
 
 <h1>posts by <%= @site.at_permalink %> (<%= @site.owner.full_name %>)</h1>
