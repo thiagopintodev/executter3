@@ -5,7 +5,8 @@ Feature: Home Feed
   I want to see a list of posts
 
 Scenario: Follows some people
-  Given I am a user
+  Given the sample users
+    And I am a user
     And that @jamespinto is following @ned and @cerci
     And that @jamespinto  has posted "Im @jamespinto"
     And that @ned         has posted "Im @ned"

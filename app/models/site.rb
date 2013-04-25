@@ -2,6 +2,32 @@ class Site < ActiveRecord::Base
 
   belongs_to :owner, polymorphic: true
 
+  has_many :posts
+  has_many :site_followers,  class_name: "Relation", foreign_key: "follower_id"
+  has_many :site_followings, class_name: "Relation", foreign_key: "following_id"
+
+
+  def followings_posts
+    #site_followings.map(&:+).map(&:posts)
+    site_ids = site_followings.pluck(:follower_id) + [id]
+    Post.where(site_id: site_ids)
+  end
+
+  def follow!(other)
+    other = case other.class.name
+            when 'String'   then Site.find_it(other)
+            # when 'Integer'  then raise "int"
+            # when 'Site'     then raise "site"
+            else raise "Follow argument has an unrecongnied type: #{other.class.name}"
+            end
+    
+    site_followings.where(follower_id: other.id).first_or_initialize.tap do |r|
+      r.is_active = true
+      r.save!
+    end
+  end
+
+
   validates_uniqueness_of :permalink, case_sensitive: false
 
   def permalink=(permalink)
@@ -10,10 +36,15 @@ class Site < ActiveRecord::Base
   end
 
   def self.find_it(s)
-    where(downcased: s.downcase.delete("@")).first
+    s1 = s.strip.downcase.delete("@")
+    where(downcased: s1).first || "site_record_not_found_#{s}".to_sym
   end
 
   def to_param
     permalink
+  end
+
+  def at_permalink
+    "@#{permalink}"
   end
 end

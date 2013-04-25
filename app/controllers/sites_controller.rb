@@ -4,6 +4,7 @@ class SitesController < ApplicationController
 
   # GET /:permalink
   def show
+    @posts = @site.followings_posts
   end
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130410223231) do
+ActiveRecord::Schema.define(version: 20130411055543) do
 
   create_table "cities", force: true do |t|
     t.integer  "city_base_id"
@@ -160,9 +160,11 @@ ActiveRecord::Schema.define(version: 20130410223231) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "link_url"
+    t.integer  "site_id"
   end
 
   add_index "posts", ["post_id"], name: "index_posts_on_post_id"
+  add_index "posts", ["site_id"], name: "index_posts_on_site_id"
   add_index "posts", ["user_id", "on_timeline"], name: "index_posts_on_user_id_and_on_timeline"
   add_index "posts", ["user_id"], name: "index_posts_on_user_id"
 
@@ -173,8 +175,13 @@ ActiveRecord::Schema.define(version: 20130410223231) do
     t.boolean  "is_followed"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "follower_id"
+    t.integer  "following_id"
+    t.boolean  "is_active",    default: false
   end
 
+  add_index "relations", ["follower_id"], name: "index_relations_on_follower_id"
+  add_index "relations", ["following_id"], name: "index_relations_on_following_id"
   add_index "relations", ["user_id", "user2_id", "is_followed"], name: "index_relations_on_user_id_and_user2_id_and_is_followed"
   add_index "relations", ["user_id", "user2_id", "is_follower"], name: "index_relations_on_user_id_and_user2_id_and_is_follower"
 

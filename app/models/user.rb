@@ -20,5 +20,9 @@ class User < ActiveRecord::Base
     site = self.site || build_site
     site.permalink=username
   end
+
+  def username
+    site.permalink
+  end
   
 end

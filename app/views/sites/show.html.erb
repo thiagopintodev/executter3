@@ -5,5 +5,12 @@
 
 <p>
   <strong>Permalink:</strong>
-  @<%= @site.permalink %>
+  <%= @site.at_permalink %>
 </p>
+
+<h1>posts by <%= @site.at_permalink %> (<%= @site.owner.full_name %>)</h1>
+<section id="posts">
+  <% @posts.each do |post| %>
+    <p><%= post.body %></p>
+  <% end %>
+</section>

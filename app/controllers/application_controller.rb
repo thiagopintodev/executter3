@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   helper_method :me
 
   def set_current_user(user)
+    @current_user = nil
     session[:user_id] = user.id
   end
 
