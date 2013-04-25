@@ -4,7 +4,7 @@ Feature: Site Posts
   As a user
   I want to see a list of posts
 
-Scenario: Follows no one
+Scenario: With Posts
   Given the sample users
     And I am a user
     And that @jamespinto  has posted "Im @jamespinto"
