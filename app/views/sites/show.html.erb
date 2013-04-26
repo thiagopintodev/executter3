@@ -24,7 +24,7 @@
 <h1>posts by <%= @site.at_permalink %> (<%= @site.owner.full_name %>)</h1>
 <section id="posts">
   <% @posts.each do |post| %>
-    <p><%= post.body %></p>
+    <p><%= link_to post.body, post %></p>
   <% end %>
 </section>
 

@@ -73,6 +73,27 @@ class PostsController < ApplicationController
     end
 
     def authorize_post!
-      deny! if me.nil?
+      case action_name
+        # when *%w(index)
+        #   deny!
+
+        # when *%w(new)
+        #   deny!
+
+        when *%w(create)
+          deny! if me.nil?
+
+
+        when *%w(show)
+          #public page
+
+        # when *%w(edit update destroy)
+        #   deny!
+
+
+        else
+          raise "this filter should not be placed for '#{action_name}' action" 
+      end
+      
     end
 end
