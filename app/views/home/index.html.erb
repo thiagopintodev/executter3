@@ -2,6 +2,23 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 
+<section id="new_post">
+  <%# '.form-horizontal', '.form-inline', '.form-search' or
+    '.form-vertical' %>
+  <%= simple_form_for(Post.new, html: {class: 'form-horizontal' }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :body %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Executter" %>
+    </div>
+  <% end %>
+
+</section>
+
 <section id="posts">
   <% @posts.each do |post| %>
     <p><%= post.body %></p>

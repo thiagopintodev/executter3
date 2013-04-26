@@ -1,5 +1,6 @@
 Ex3::Application.routes.draw do
 
+  resources :posts, only: [:show, :create]
 
   get "home" => "home#index"
   # get  "sign_out" => "sign_up#sign_out"

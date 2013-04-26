@@ -1,0 +1,13 @@
+<%# '.form-horizontal', '.form-inline', '.form-search' or
+  '.form-vertical' %>
+<%= simple_form_for(@post, html: {class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :body %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
