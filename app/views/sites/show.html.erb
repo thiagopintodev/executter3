@@ -27,3 +27,15 @@
     <p><%= post.body %></p>
   <% end %>
 </section>
+
+
+<h1><%= @site.at_permalink %>'s followers</h1>
+<section id="followers">
+  <% @site.followers.map(&:other).each do |site| %>
+    <%= link_to site_path(site) do %>
+      <%= site.owner.full_name %>
+      <%= site.at_permalink %>
+    <% end %>
+    <hr />
+  <% end %>
+</section>
