@@ -16,4 +16,9 @@ class ApplicationController < ActionController::Base
   end
   alias :me :current_user
 
+  def deny!(msg="Access Denied")
+    flash[:notice] = msg
+    redirect_to :root
+  end
+
 end

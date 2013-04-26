@@ -6,10 +6,11 @@ Feature: Authorization
 
   Scenario: As a visitor
     Given I am a visitor
-    When I go to the home page
-    Then I should see "access denied"
+    When  I go to the home page
+    Then  I should see "Access Denied"
+     And  I should be on the root page
 
   Scenario: As a user
     Given I am a user
-    When I go to the home page
-    Then I should not see "access denied"
+    When  I go to the home page
+    Then  I should not see "Access Denied"

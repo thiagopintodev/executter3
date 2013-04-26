@@ -9,6 +9,6 @@ class HomeController < ApplicationController
   private
 
   def authorize!
-    redirect_to :root if me.nil?
+    deny! if me.nil?
   end
 end
