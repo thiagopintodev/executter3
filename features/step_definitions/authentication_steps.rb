@@ -14,6 +14,7 @@ end
 Given /^I am a user$/ do
   step "James Pinto"
 
+
   visit sign_in_path
   fill_in "Email",    :with => 'james@rubyfactory.net'
   fill_in "Password", :with => 'secret!'

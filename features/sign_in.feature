@@ -5,8 +5,8 @@ Feature: Sign In
   I want to be able so sign in from various pages
 
   Scenario: Signs in with invalid credentials
-    Given I go to the sign in page
-    When I fill in the following:
+    Given I go to the home page
+    When I fill in the sign in header with the following:
       | Email     | invalid@invalid.com |
       | Password  | invalid             |
       And I press "Connect"
@@ -14,11 +14,20 @@ Feature: Sign In
 
   Scenario: Signs in with valid credentials
     Given James Pinto
-      And I am on the sign in page
-    When  I fill in the following:
+    Given I go to the home page
+    When  I fill in the sign in header with the following:
       | Email     | james@rubyfactory.net |
       | Password  | secure!               |
       And I press "Connect"
-    Then I should see "You Have Signed In."
+    Then  I should see "You Have Signed In."
+
+  Scenario: In the sign in box
+    Given James Pinto
+      And I am on the sign in page
+    When  I fill in the sign in box with the following:
+      | Email     | james@rubyfactory.net |
+      | Password  | secure!               |
+      And I press "Connect"
+    Then  I should see "You Have Signed In."
 
 

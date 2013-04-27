@@ -1,3 +1,4 @@
+<div id="sign_in_box">
 <%= simple_form_for(@new_user, url: sign_in_path, method: :post, html: {class: 'form-horizontal' }) do |f| %>
   <%= hidden_field_tag :return_url, params[:return_url] %>
   <div class="form-inputs">
@@ -14,3 +15,4 @@
     <%= f.button :submit, 'Connect' %>
   </div>
 <% end %>
+</div>
