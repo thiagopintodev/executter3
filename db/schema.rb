@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130425212352) do
+ActiveRecord::Schema.define(version: 20130427171412) do
 
   create_table "cities", force: true do |t|
     t.integer  "city_base_id"
@@ -299,7 +299,7 @@ ActiveRecord::Schema.define(version: 20130425212352) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "sex",                    default: 0
-    t.date     "born_at"
+    t.date     "born_on"
     t.boolean  "likes_male",             default: false
     t.boolean  "likes_female",           default: false
     t.string   "locale"
@@ -309,6 +309,7 @@ ActiveRecord::Schema.define(version: 20130425212352) do
     t.integer  "last_read_post_id"
     t.integer  "born_city_id"
     t.integer  "living_city_id"
+    t.string   "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email"

@@ -7,8 +7,10 @@ class User < ActiveRecord::Base
 
   validates :first_name,  presence: true, length: { in: 2..16 }
   validates :last_name,   presence: true, length: { in: 2..32 }
+  validates :gender,      presence: true, inclusion: {in: USER_GENDERS}
+  validates :born_on,     presence: true
   
-  #validates :username, :exclusion => { :in => %w(admin superuser) }
+  validates :username, presence: true, exclusion: { in: %w(admin superuser) }
 
   has_one :site, as: :owner, autosave: true
 
@@ -17,12 +19,12 @@ class User < ActiveRecord::Base
   end
 
   def username=(username)
-    site = self.site || build_site
-    site.permalink=username
+    self.site ||= build_site
+    self.site.permalink=username
   end
 
   def username
-    site.permalink
+    site.permalink if site
   end
   
 end

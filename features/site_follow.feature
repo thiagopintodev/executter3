@@ -9,7 +9,7 @@ Scenario: As a visitor
     And I am a visitor
     And I am on @ned's site page
   When  I follow "Follow Eddard Stark"
-  Then  I should be on the root page
+  Then  I should be on the sign up page
 
 Scenario: I Follow
   Given the sample users

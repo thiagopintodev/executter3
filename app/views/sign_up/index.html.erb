@@ -1,0 +1,24 @@
+<%= simple_form_for(@user, url: sign_up_path, :html => {:class => 'form-horizontal' }) do |f| %>
+  <%= hidden_field_tag :return_url, params[:return_url] %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :username %>
+    <%#= f.input :city %>
+    <%= f.input :email, label: "E-mail" %>
+    <%= f.input :password %>
+    <%= f.input :born_on, as: :date,
+                          start_year: Date.today.year - 100,
+                          end_year: Date.today.year - 12,
+                          discard_day: false,
+                          order: [:day, :month, :year]
+                          %>
+    <%= f.input :gender, collection: USER_GENDERS, include_blank: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Sign Up" %>
+  </div>
+<% end %>

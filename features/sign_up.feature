@@ -7,15 +7,15 @@ Feature: Sign Up
 Scenario: Signs up with valid information
   Given I go to the home page
   When I fill in the following:
-    | First Name  | James                 |
-    | Last Name   | Pinto                 |
+    | First name  | James                 |
+    | Last name   | Pinto                 |
     | Username    | jamespinto            |
-    | City        | brasilia              |
-    | Email       | james@rubyfactory.net |
+    #| City        | brasilia              |
+    | E-mail       | james@rubyfactory.net |
     | Password    | secret!               |
-    | Sex         | Boy                   |
-    | Born At     | 1988-02-20            |
+    And I select "male" from "Gender"
+    And I select "1988-02-20" as the user "born_on" date
     And I press "Sign Up"
-  Then I should see "Your Account has been created"
+  Then I should see "Welcome to Executter!"
 
 #TODO: write more scenarios

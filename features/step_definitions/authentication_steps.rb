@@ -12,19 +12,11 @@ end
 
 
 Given /^I am a user$/ do
-  username = 'jamespinto'
-  email = 'james@rubyfactory.net'
-  password = 'secret!'
+  step "James Pinto"
 
-  steps %{ 
-    Given the following user records
-      | first_name  | last_name | username    | email          | password |
-      | James       | Pinto     | #{username} | #{email}       | #{password}  |
-  }
-
-  visit home_path
-  fill_in "Email",    :with => email
-  fill_in "Password", :with => password
+  visit sign_in_path
+  fill_in "Email",    :with => 'james@rubyfactory.net'
+  fill_in "Password", :with => 'secret!'
   click_button "Connect"
 
   # cucumber requires all step calls to be a Given :(

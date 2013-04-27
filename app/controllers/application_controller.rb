@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def deny!(msg="Access Denied")
     flash[:notice] = msg
-    redirect_to :root
+    redirect_to :sign_up
   end
 
 end

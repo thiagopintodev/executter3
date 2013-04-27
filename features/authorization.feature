@@ -8,7 +8,7 @@ Feature: Authorization
     Given I am a visitor
     When  I go to the home page
     Then  I should see "Access Denied"
-     And  I should be on the root page
+     And  I should be on the sign up page
 
   Scenario: As a user
     Given I am a user
