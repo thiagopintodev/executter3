@@ -19,6 +19,9 @@ module NavigationHelpers
     when /^(.*)'s site page$/i
       site_path(Site.find_it($1))
 
+    when /^the latest post page$/i
+      post_path(Post.last)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

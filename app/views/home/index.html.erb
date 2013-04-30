@@ -2,6 +2,8 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 
+<h1>New Post</h1>
+<hr>
 <section id="new_post">
   <%# '.form-horizontal', '.form-inline', '.form-search' or
     '.form-vertical' %>
@@ -19,8 +21,11 @@
 
 </section>
 
+<h1>Posts</h1>
+<hr>
 <section id="posts">
   <% @posts.each do |post| %>
     <p><%= post.body %></p>
+    <hr>
   <% end %>
 </section>

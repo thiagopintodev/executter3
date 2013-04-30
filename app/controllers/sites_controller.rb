@@ -1,5 +1,5 @@
 class SitesController < ApplicationController
-  before_action :set_site
+  before_action :define_site
   before_action :authorize_site!
 
   # GET /:permalink
@@ -21,12 +21,12 @@ class SitesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_site
+    def define_site
       @site = Site.find_it(params[:site_id])
       @relations = Relation.get_relations(me.site, @site) if me.present?
     end
 
     def authorize_site!
-      
+      deny! if cannot? @site, action_name
     end
 end

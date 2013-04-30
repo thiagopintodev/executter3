@@ -1,4 +1,5 @@
 class SignInController < ApplicationController
+  permit_controller!
 
   # GET /sign_in
   def index

@@ -7,10 +7,15 @@ gem 'pg'
 gem 'jquery-rails'
 gem 'turbolinks'            # https://github.com/rails/turbolinks
 gem 'jbuilder', '~> 1.0.1'  # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem "simple_form", github: 'plataformatec/simple_form'
+gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'hash_extension'
 gem 'validates_email_format_of'
 gem 'bcrypt-ruby'
+
+gem 'permissions',
+  github: 'yakko/permissions'
+  #path: '../permissions'
+
 
 
 # Gems used only for assets and not required
