@@ -1,17 +1,8 @@
 Rails.application.permissions.draw do
 
-  # set_denied_path    { home_path }
+  set_denied_path    { home_path }
 
-  # set_denied_message { "Access Denied." }
-
-  # set_current_user_role do
-  #   if current_user
-  #     :user
-  #   else
-  #     :guest
-  #   end
-  # end
-
+  set_denied_message { "Access Denied." }
 
   role :guest do
     can_controller :sign_up, :sign_in
