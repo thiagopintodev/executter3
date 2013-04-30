@@ -4,18 +4,22 @@ Rails.application.permissions.draw do
 
   set_denied_message { "Access Denied." }
 
-  role :guest do
-    can_controller :sign_up, :sign_in
-
-    can_controller :home do
-      {message: "You need to log in.", redirect_to: sign_up_path}
-    end
+  role :guest, :user do
 
     model :posts do
       can :show
     end
     model :sites do
       can :show
+    end
+    
+  end
+
+  role :guest do
+    can_controller :sign_up, :sign_in
+
+    can_controller :home do
+      {message: "You need to log in.", redirect_to: sign_up_path}
     end
   end
 
@@ -27,7 +31,7 @@ Rails.application.permissions.draw do
     can_model :sites
 
     model :posts do
-      can :show, :create
+      can :create
       can(:edit, :update, :destroy) { current_user.site.id == @post.site_id }
     end
 
