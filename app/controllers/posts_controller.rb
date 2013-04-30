@@ -47,7 +47,6 @@ class PostsController < ApplicationController
       case action_name
         when *%w(index)
           @posts = Post.all
-          deny! if cannot? Post, action_name
 
 
         when *%w(new)
@@ -66,7 +65,12 @@ class PostsController < ApplicationController
           raise "this filter should not be placed for '#{action_name}' action" 
       end
       
-      deny! if cannot? @post, action_name
+      #authorize post
+      if @post
+        deny! if cannot? @post, action_name
+      else
+        deny! if cannot? Post, action_name
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
