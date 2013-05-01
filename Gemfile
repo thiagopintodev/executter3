@@ -16,9 +16,9 @@ gem 'permissions' #,
   #github: 'yakko/permissions'
   #path: '../permissions'
 
-gem 'load_resource_rails' #,
-  #github: 'yakko/load_resource_rails'
-  # path: '../load_resource_rails'
+gem 'load_resource' #,
+  #github: 'yakko/load_resource'
+   #path: '../load_resource'
 
 
 

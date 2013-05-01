@@ -82,7 +82,7 @@ GEM
     kgio (2.8.0)
     launchy (2.2.0)
       addressable (~> 2.3)
-    load_resource_rails (1.0.1)
+    load_resource (1.0.2)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -172,7 +172,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   launchy
-  load_resource_rails
+  load_resource
   permissions
   pg
   rails (= 4.0.0.beta1)
