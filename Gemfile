@@ -12,9 +12,13 @@ gem 'hash_extension'
 gem 'validates_email_format_of'
 gem 'bcrypt-ruby'
 
-gem 'permissions',
-  github: 'yakko/permissions'
+gem 'permissions' #,
+  #github: 'yakko/permissions'
   #path: '../permissions'
+
+gem 'load_resource_rails' #,
+  #github: 'yakko/load_resource_rails'
+  # path: '../load_resource_rails'
 
 
 

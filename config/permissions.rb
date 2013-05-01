@@ -41,20 +41,6 @@ Rails.application.permissions.draw do
 
   end
 
-
-
-  # set_denied_path    { root_path }
-
-  # set_denied_message { "Access Denied to #{controller_name}##{action_name}" }
-
-  # set_current_user_role do
-  #   if current_user
-  #     :user
-  #   else
-  #     :guest
-  #   end
-  # end
-
   # Learn more
   # https://github.com/yakko/permissions
 

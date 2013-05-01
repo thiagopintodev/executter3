@@ -42,30 +42,18 @@ class PostsController < ApplicationController
   end
 
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def define_post
-      case action_name
-        when *%w(index)
-          @posts = Post.all
-
-
-        when *%w(new)
-          @post = Post.new
-
-
-        when *%w(create)
-          @post = me.site.posts.build(post_params)
-
-
-        when *%w(show edit update destroy)
-          @post = Post.find(params[:id])
-
-
-        else
-          raise "this filter should not be placed for '#{action_name}' action" 
+      load_resource do
+        before                                      {  }
+        for_action(:index)                          { @posts = Post.all               }
+        for_action(:new)                            { @post  = Post.new               }
+        for_action(:create)                         { @post  = Post.new(post_params)  }
+        for_action(:show, :edit, :update, :destroy) { @post  = Post.find(params[:id]) }
+        after                                       {  }
       end
-      
-      #authorize post
+
       if @post
         deny! if cannot? @post, action_name
       else
