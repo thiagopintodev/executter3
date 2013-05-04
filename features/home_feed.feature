@@ -6,14 +6,14 @@ Feature: Home Feed
 
 Scenario: Follows some people
   Given the sample users
-    And I am a user
-    And that @jamespinto is following @ned and @cerci
-    And that @jamespinto  has posted "Im @jamespinto"
-    And that @ned         has posted "Im @ned"
-    And that @cerci       has posted "Im @cerci"
-    And that @bran        has posted "Im @bran"
+    And I am @james
+    And that @james is following @ned and @cerci
+    And that @james  has posted "Im @james"
+    And that @ned    has posted "Im @ned"
+    And that @cerci  has posted "Im @cerci"
+    And that @bran   has posted "Im @bran"
   When  I go to the home page
-  Then  I should see "Im @jamespinto"
+  Then  I should see "Im @james"
     And I should see "Im @ned"
     And I should see "Im @cerci"
     And I should see "Im @ned"

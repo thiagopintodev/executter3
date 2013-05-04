@@ -9,6 +9,6 @@ Feature: Sign In Header
     Then I should see the selector "#sign_in_header"
 
   Scenario: Hides to user
-    Given I am a user
+    Given I am @james
     When I go to the home page
     Then I should not see the selector "#sign_in_header"

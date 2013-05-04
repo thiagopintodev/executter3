@@ -11,7 +11,7 @@ end
 
 
 
-Given /^I am a user$/ do
+Given /^I am @james$/ do
   step "James Pinto"
 
 

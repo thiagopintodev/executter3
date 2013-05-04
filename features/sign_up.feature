@@ -9,7 +9,7 @@ Scenario: Signs up with valid information
   When I fill in the sign up box with the following:
     | First name  | James                 |
     | Last name   | Pinto                 |
-    | Username    | jamespinto            |
+    | Username    | james                 |
     #| City        | brasilia              |
     | Email       | james@rubyfactory.net |
     | Password    | secret!               |

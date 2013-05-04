@@ -6,11 +6,11 @@ Feature: Site Posts
 
 Scenario: With Posts
   Given the sample users
-    And I am a user
-    And that @jamespinto  has posted "Im @jamespinto"
+    And I am @james
+    And that @james  has posted "Im @james"
     And that @ned         has posted "Im @ned"
   When  I go to @ned's site page
   Then  I should see "Eddard Stark"
     And I should see "posts by @ned (Eddard Stark)"
     And I should see "Im @ned"
-    But I should not see "Im @jamespinto"
+    But I should not see "Im @james"

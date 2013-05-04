@@ -5,7 +5,7 @@ Feature: Post Creation
   I want to fill the post form correctly
 
   Scenario: Post a text
-    Given I am a user
+    Given I am @james
       And I am on the home page
     When I fill in the following:
       | Body     | lalala |
