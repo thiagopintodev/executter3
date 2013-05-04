@@ -4,12 +4,13 @@ Rails.application.permissions.draw do
 
   set_denied_message { "Access Denied." }
 
+
   role :guest, :user do
 
-    model :posts do
+    controller :posts do
       can :show
     end
-    model :sites do
+    controller :sites do
       can :show
     end
     
@@ -28,9 +29,9 @@ Rails.application.permissions.draw do
   role :user do
     can_controller :home
 
-    can_model :sites
+    can_controller :sites
 
-    model :posts do
+    controller :posts do
       can :create
       can(:edit, :update, :destroy) { current_user.site.id == @post.site_id }
     end
