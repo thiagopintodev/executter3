@@ -1,3 +1,6 @@
+Your bundle is complete!
+Gems in the group production were not installed.
+It was installed into /home/deployer/bundles/ex3
 Post-install message from capybara:
 IMPORTANT! Some of the defaults have changed in Capybara 2.1. If you're experiencing failures,
 please revert to the old behaviour by setting:
@@ -17,3 +20,11 @@ If you're migrating from Capybara 1.x, try:
     end
 
 Details here: http://www.elabs.se/blog/60-introducing-capybara-2-1
+
+Post-install message from rdoc:
+Depending on your version of ruby, you may need to install ruby rdoc/ri data:
+
+<= 1.8.6 : unsupported
+ = 1.8.7 : gem install rdoc-data; rdoc-data --install
+ = 1.9.1 : gem install rdoc-data; rdoc-data --install
+>= 1.9.2 : nothing to do! Yay!
