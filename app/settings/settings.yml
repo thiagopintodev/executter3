@@ -1,5 +1,6 @@
 defaults: &defaults
   host: localhost:3000
+  session_secret: 'cf3da036009f0ec4220f3996ef7f79617fdce01f577117e0a21d074a3d2490eeaa983337f07859d048780d4fdee50bfce22ac2f87e27a5d54c68f9ac4d4d7059'
   facebook:
     app_key: '274790155904059'
     secret: 'aa3dc1b647378b4fdd096234751afc51'
