@@ -4,8 +4,8 @@ class SitesController < ApplicationController
     before do
       @site = Site.find_it(params[:site_id])
       @relations = Relation.get_relations(me.site, @site) if me.present?
+      permit_controller!
     end
-    after  { permit_controller! }
   end
 
   # GET /:permalink
