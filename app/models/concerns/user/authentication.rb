@@ -1,18 +1,38 @@
 class User < ActiveRecord::Base
   
-  module SignIn
+  module Authentication
     extend ActiveSupport::Concern
 
     included do
-      validates_email_format_of :email
-      validates_uniqueness_of   :email, :case_sensitive => false
-      validates :password,  presence: true, length: { in: 4..20 }, on: :create
-      validates :password_digest,  presence: true
+      has_many :user_sessions
+      #
+      validates :email,             presence: true, email_format: true, uniqueness: true #{case_sensitive: false}
+      #
+      validates :password_digest,   presence: true
+      validates :password,          length: { in: 4..20 }, presence: true,     on: :create
+      validates :password,          confirmation: true
+      #validates_confirmation_of :password
     end
+
+    def change_generic_token!
+      update_attributes! generic_token: rand(Time.now.to_i).to_s
+    end
+
+    def change_authentication_token!
+      update_attributes! authentication_token: rand(Time.now.to_i).to_s
+    end
+
+    def confirm_email!
+      update_attributes! email_confirmed: true
+    end
+
+    # enforce email downcase
 
     def email=(email)
       write_attribute(:email, email.downcase)
     end
+
+    # password
 
     attr_accessor :password
 

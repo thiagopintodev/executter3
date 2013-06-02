@@ -8,10 +8,11 @@ class SignUpController < ApplicationController
 
   # POST /sign_up
   def create
+    user_params = params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :born_on, :gender) #city
     @user = User.new(user_params)
 
     if @user.save
-      set_current_user @user
+      set_current_user @user, 'sign_up'
       r = params[:return_url]
       r = home_path if r.blank?
       redirect_to r, notice: 'Welcome to Executter!'
@@ -20,16 +21,11 @@ class SignUpController < ApplicationController
     end
   end
 
+  # MOVED TO HOME CONTROLLER FOR A PERMISSIONS PROBLEM
   # GET /sign_out
   # def sign_out
   #   session.clear
-  #   redirect_to sign_in_path
+  #   redirect_to sign_in_path, notice: "You have signed out."
   # end
-
-  private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :born_on, :gender) #city
-    end
 
 end

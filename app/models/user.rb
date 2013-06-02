@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-  include SignIn
+  include Authentication
 
 
   #VALIDATIONS

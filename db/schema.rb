@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130427171412) do
+ActiveRecord::Schema.define(version: 20130601142152) do
 
   create_table "cities", force: true do |t|
     t.integer  "city_base_id"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "city_bases", ["data"], name: "index_city_bases_on_data"
-  add_index "city_bases", ["label"], name: "index_city_bases_on_label"
+  add_index "city_bases", ["data"], name: "index_city_bases_on_data", using: :btree
+  add_index "city_bases", ["label"], name: "index_city_bases_on_label", using: :btree
 
   create_table "followers", force: true do |t|
     t.integer  "site_id"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "followers", ["other_id"], name: "index_followers_on_other_id"
-  add_index "followers", ["site_id"], name: "index_followers_on_site_id"
+  add_index "followers", ["other_id"], name: "index_followers_on_other_id", using: :btree
+  add_index "followers", ["site_id"], name: "index_followers_on_site_id", using: :btree
 
   create_table "followings", force: true do |t|
     t.integer  "site_id"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "followings", ["other_id"], name: "index_followings_on_other_id"
-  add_index "followings", ["site_id"], name: "index_followings_on_site_id"
+  add_index "followings", ["other_id"], name: "index_followings_on_other_id", using: :btree
+  add_index "followings", ["site_id"], name: "index_followings_on_site_id", using: :btree
 
   create_table "invites", force: true do |t|
     t.integer  "user_id"
@@ -68,9 +68,9 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "invites", ["email_to"], name: "index_invites_on_email_to"
-  add_index "invites", ["token"], name: "index_invites_on_token"
-  add_index "invites", ["user_id"], name: "index_invites_on_user_id"
+  add_index "invites", ["email_to"], name: "index_invites_on_email_to", using: :btree
+  add_index "invites", ["token"], name: "index_invites_on_token", using: :btree
+  add_index "invites", ["user_id"], name: "index_invites_on_user_id", using: :btree
 
   create_table "likes", force: true do |t|
     t.integer  "post_id"
@@ -109,7 +109,7 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "other_updated_at"
   end
 
-  add_index "post_files", ["post_id"], name: "index_post_files_on_post_id"
+  add_index "post_files", ["post_id"], name: "index_post_files_on_post_id", using: :btree
 
   create_table "post_followers", force: true do |t|
     t.integer  "post_id"
@@ -119,8 +119,8 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "post_followers", ["post_id"], name: "index_post_followers_on_post_id"
-  add_index "post_followers", ["user_id"], name: "index_post_followers_on_user_id"
+  add_index "post_followers", ["post_id"], name: "index_post_followers_on_post_id", using: :btree
+  add_index "post_followers", ["user_id"], name: "index_post_followers_on_user_id", using: :btree
 
   create_table "post_mentions", force: true do |t|
     t.integer  "post_id"
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "post_mentions", ["value"], name: "index_post_mentions_on_value"
+  add_index "post_mentions", ["value"], name: "index_post_mentions_on_value", using: :btree
 
   create_table "post_user_news", force: true do |t|
     t.integer  "post_id"
@@ -143,20 +143,20 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "post_user_news", ["user_id", "is_mailed"], name: "index_post_user_news_on_user_id_and_is_mailed"
-  add_index "post_user_news", ["user_id", "is_read", "is_mailed"], name: "index_post_user_news_on_user_id_and_is_read_and_is_mailed"
-  add_index "post_user_news", ["user_id", "is_read"], name: "index_post_user_news_on_user_id_and_is_read"
-  add_index "post_user_news", ["user_id"], name: "index_post_user_news_on_user_id"
-  add_index "post_user_news", ["user_id_from"], name: "index_post_user_news_on_user_id_from"
+  add_index "post_user_news", ["user_id", "is_mailed"], name: "index_post_user_news_on_user_id_and_is_mailed", using: :btree
+  add_index "post_user_news", ["user_id", "is_read", "is_mailed"], name: "index_post_user_news_on_user_id_and_is_read_and_is_mailed", using: :btree
+  add_index "post_user_news", ["user_id", "is_read"], name: "index_post_user_news_on_user_id_and_is_read", using: :btree
+  add_index "post_user_news", ["user_id"], name: "index_post_user_news_on_user_id", using: :btree
+  add_index "post_user_news", ["user_id_from"], name: "index_post_user_news_on_user_id_from", using: :btree
 
   create_table "post_words", id: false, force: true do |t|
     t.integer "post_id"
     t.string  "word"
   end
 
-  add_index "post_words", ["post_id", "word"], name: "index_post_words_on_post_id_and_word"
-  add_index "post_words", ["post_id"], name: "index_post_words_on_post_id"
-  add_index "post_words", ["word"], name: "index_post_words_on_word"
+  add_index "post_words", ["post_id", "word"], name: "index_post_words_on_post_id_and_word", using: :btree
+  add_index "post_words", ["post_id"], name: "index_post_words_on_post_id", using: :btree
+  add_index "post_words", ["word"], name: "index_post_words_on_word", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
@@ -183,10 +183,10 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.integer  "site_id"
   end
 
-  add_index "posts", ["post_id"], name: "index_posts_on_post_id"
-  add_index "posts", ["site_id"], name: "index_posts_on_site_id"
-  add_index "posts", ["user_id", "on_timeline"], name: "index_posts_on_user_id_and_on_timeline"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["post_id"], name: "index_posts_on_post_id", using: :btree
+  add_index "posts", ["site_id"], name: "index_posts_on_site_id", using: :btree
+  add_index "posts", ["user_id", "on_timeline"], name: "index_posts_on_user_id_and_on_timeline", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "relations", force: true do |t|
     t.integer  "user_id"
@@ -197,8 +197,8 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "relations", ["user_id", "user2_id", "is_followed"], name: "index_relations_on_user_id_and_user2_id_and_is_followed"
-  add_index "relations", ["user_id", "user2_id", "is_follower"], name: "index_relations_on_user_id_and_user2_id_and_is_follower"
+  add_index "relations", ["user_id", "user2_id", "is_followed"], name: "index_relations_on_user_id_and_user2_id_and_is_followed", using: :btree
+  add_index "relations", ["user_id", "user2_id", "is_follower"], name: "index_relations_on_user_id_and_user2_id_and_is_follower", using: :btree
 
   create_table "sites", force: true do |t|
     t.string   "owner_type"
@@ -209,8 +209,8 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "sites", ["owner_type", "owner_id"], name: "index_sites_on_owner_type_and_owner_id"
-  add_index "sites", ["permalink"], name: "index_sites_on_permalink"
+  add_index "sites", ["owner_type", "owner_id"], name: "index_sites_on_owner_type_and_owner_id", using: :btree
+  add_index "sites", ["permalink"], name: "index_sites_on_permalink", using: :btree
 
   create_table "smiles", force: true do |t|
     t.string   "key"
@@ -245,7 +245,7 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "updated_at"
   end
 
-  add_index "user_agents", ["key"], name: "index_user_agents_on_key"
+  add_index "user_agents", ["key"], name: "index_user_agents_on_key", using: :btree
 
   create_table "user_photos", force: true do |t|
     t.integer  "user_id"
@@ -257,13 +257,17 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "image_updated_at"
   end
 
-  add_index "user_photos", ["user_id"], name: "index_user_photos_on_user_id"
+  add_index "user_photos", ["user_id"], name: "index_user_photos_on_user_id", using: :btree
 
   create_table "user_sessions", force: true do |t|
     t.integer  "user_id"
     t.string   "authentication_token"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "origin"
+    t.string   "remote_ip"
+    t.string   "user_agent"
+    t.datetime "died_at"
   end
 
   create_table "user_themes", force: true do |t|
@@ -279,7 +283,7 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.datetime "image_updated_at"
   end
 
-  add_index "user_themes", ["user_id"], name: "index_user_themes_on_user_id"
+  add_index "user_themes", ["user_id"], name: "index_user_themes_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"
@@ -310,9 +314,10 @@ ActiveRecord::Schema.define(version: 20130427171412) do
     t.integer  "born_city_id"
     t.integer  "living_city_id"
     t.string   "gender"
+    t.string   "generic_token"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email"
-  add_index "users", ["id", "email"], name: "index_users_on_id_and_email"
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["id", "email"], name: "index_users_on_id_and_email", using: :btree
 
 end

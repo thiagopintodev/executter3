@@ -22,6 +22,23 @@ module NavigationHelpers
     when /^the latest post page$/i
       post_path(Post.last)
 
+    when /^the latest post page$/i
+      post_path(Post.last)
+
+    when /^an invalid password reset link$/i
+      password_reset_path(1, 'invalid')
+
+    when /^a valid password reset link$/i
+      u = Site.find_it('@james').owner
+      password_reset_path(u.id, u.generic_token)
+
+
+    # when /^an invalid email confirmation link$/i
+    #   confirm_email_path(1, 'invalid')
+    # when /^a valid email confirmation link$/i
+    #   u = Site.find_it('@james').owner
+    #   confirm_email_path(u.id, u.generic_token)
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

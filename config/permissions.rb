@@ -17,7 +17,7 @@ Rails.application.permissions.draw do
   end
 
   role :guest do
-    can_controller :sign_up, :sign_in
+    can_controller :sign_up, :sign_in, :password
 
     can_controller :home do
       {message: "You need to log in.", redirect_to: sign_up_path}
