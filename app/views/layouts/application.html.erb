@@ -8,11 +8,38 @@
 </head>
 <body>
 
-<%= render_sign_in_header %>
 
-<p id="notice"><%= notice %></p>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <a class="brand" href="<%= me ? home_path : sign_up_path %>">Executter</a>
+      <%= render_top_tabs %>
 
-<%= yield %>
+      
+      <% if false %>
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar">a</span>
+          <span class="icon-bar">b</span>
+          <span class="icon-bar">c</span>
+        </button>
+        <div class="nav-collapse collapse">
+        </div><!--/.nav-collapse -->
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+
+  <%= render_sign_in_header %>
+
+  <%= render_flash %>
+
+
+  <%= yield %>
+
+</div>
 
 </body>
 </html>

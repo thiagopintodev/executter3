@@ -2,11 +2,72 @@
 
 //variables here
 
+
+
+$navbarBackgroundHighlight: #f90;
+$navbarBackground: #f90;
+$navbarBorder: #f60;
+$navbarHeight: 30px;
+
 @import "bootstrap";
 
+body { padding-top: 60px; }
+
+
 @import "font-awesome";
-@import "bootstrap-responsive";
+//@import "bootstrap-responsive";
 
 * {
 -webkit-font-smoothing: antialiased;
+}
+
+
+// to customize view
+// https://github.com/thomas-mcdonald/bootstrap-sass/tree/master/vendor/assets/stylesheets/bootstrap
+
+
+
+
+// Inner for background effects
+// Gradient is applied to its own element because overflow visible is not honored by IE when filter is present
+.navbar-inner {
+  min-height: $navbarHeight;
+  padding-left:  20px;
+  padding-right: 20px;
+  @include gradient-vertical($navbarBackgroundHighlight, $navbarBackground);
+  border: 1px solid $navbarBorder;
+  @include border-radius($baseBorderRadius);
+  @include box-shadow(0 1px 4px rgba(0,0,0,.065));
+
+  // Prevent floats from breaking the navbar
+  @include clearfix();
+}
+
+@mixin header-menu-selected {
+  background-color: $navbarBorder;
+  color: #fff;
+}
+    
+.navbar {
+  a.brand {
+    color: #fff;
+    text-shadow: 0 0 0;
+    padding: 5px 20px 5px;
+    &:hover, &:focus {
+      @include header-menu-selected;
+    }
+  }
+  .nav > li > a {
+    color: #fff;
+    text-shadow: 0 0 0;
+    padding: 5px 15px 5px;
+    &:hover {
+      @include header-menu-selected;
+    }
+  }
+  .nav > .active > a {
+    &, &:hover, &:focus {
+      @include header-menu-selected;
+    }
+  }
 }

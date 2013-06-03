@@ -46,4 +46,6 @@ class Site < ActiveRecord::Base
   def at_permalink
     "@#{permalink}"
   end
+
+  alias :u_ :at_permalink
 end

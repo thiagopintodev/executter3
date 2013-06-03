@@ -1,3 +1,5 @@
+
+<section class="section">
 <p>
   <strong>Owner:</strong>
   <%= @site.owner.full_name %>
@@ -7,8 +9,9 @@
   <strong>Permalink:</strong>
   <%= @site.at_permalink %>
 </p>
+</section>
 
-<section id="relations">
+<section id="relations" class="section">
   <p><%= @site.followings.count %> followings</p>
   <p><%= @site.followers.count %> followers</p>
   <hr />
@@ -21,16 +24,16 @@
   <% end %>
 </section>
 
+<section id="posts" class="section">
 <h1>posts by <%= @site.at_permalink %> (<%= @site.owner.full_name %>)</h1>
-<section id="posts">
   <% @posts.each do |post| %>
     <p><%= link_to post.body, post %></p>
   <% end %>
 </section>
 
 
+<section id="followers" class="section">
 <h1><%= @site.at_permalink %>'s followers</h1>
-<section id="followers">
   <% @site.followers.map(&:other).each do |site| %>
     <%= link_to site_path(site) do %>
       <%= site.owner.full_name %>
