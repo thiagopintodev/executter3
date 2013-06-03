@@ -11,5 +11,8 @@ Feature: Post Creation
       | Body     | lalala |
      And I press "Executter"
     Then I should see "Post was successfully created."
+    #
+    When I go to @james's site page
+    Then I should see "lalala"
 
 

@@ -1,8 +1,11 @@
 class Post < ActiveRecord::Base
   belongs_to :site
 
+  validates :site_id, presence: true
+  validates :body, presence: true, length: { in: 2..196 }
+
   before_create do
-    self.remote_ip = '0.0.0.0'
+    self.remote_ip ||= '0.0.0.0'
     self.files_categories = 'status'
   end
 

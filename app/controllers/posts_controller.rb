@@ -4,7 +4,7 @@ class PostsController < ApplicationController
     before                                  {  }
     before(:index)                          { @posts = Post.all               }
     before(:new)                            { @post  = Post.new               }
-    before(:create)                         { @post  = Post.new(post_params)  }
+    before(:create)                         { @post  = me.site.posts.build(post_params)  }
     before(:show, :edit, :update, :destroy) { @post  = Post.find(params[:id]) }
     after                                   { permit_controller! }
   end
@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   # POST /posts
   def create
+    @post.remote_ip = request.remote_ip
     if @post.save
       redirect_to home_path, notice: 'Post was successfully created.'
     else
