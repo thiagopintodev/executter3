@@ -1,4 +1,5 @@
-
+<div style="float:left;display:inline-block;width:800px">
+  
 <section class="section">
 <p>
   <strong>Owner:</strong>
@@ -15,13 +16,7 @@
   <p><%= @site.followings.count %> followings</p>
   <p><%= @site.followers.count %> followers</p>
   <hr />
-  <% if not me %>
-    <p><%= link_to "+ Follow #{@site.owner.full_name}", root_path %></p>
-  <% elsif @relations.am_follower %>
-    <p><%= link_to "- Unfollow #{@site.owner.full_name}", site_unfollow_path(@site) %></p>
-  <% else %>
-    <p><%= link_to "+ Follow #{@site.owner.full_name}", site_follow_path(@site) %></p>
-  <% end %>
+  
 </section>
 
 <section id="posts" class="section">
@@ -31,14 +26,28 @@
   <% end %>
 </section>
 
+</div>
 
-<section id="followers" class="section">
-<h1><%= @site.at_permalink %>'s followers</h1>
-  <% @site.followers.map(&:other).each do |site| %>
-    <%= link_to site_path(site) do %>
-      <%= site.owner.full_name %>
-      <%= site.at_permalink %>
-    <% end %>
-    <hr />
+<div id="followers____" class="sidebar-right-1">
+  <% if not me %>
+    <%= link_to icon_text("plus-sign", "Join Followers"), root_path, class: "my-big-button img-polaroid" %>
+  <% elsif @relations.am_follower %>
+    <%= link_to icon_text("remove-sign", "Unfollow"), site_unfollow_path(@site), class: "my-small-button img-polaroid" %>
+  <% else %>
+    <%= link_to icon_text("plus-sign", "Join Followers"), site_follow_path(@site), class: "my-big-button img-polaroid" %>
   <% end %>
-</section>
+
+  <%= link_to icon_text("reorder",   "View Followers"), '#', class: "my-big-button img-polaroid", onclick: "alert('not implemented, wait for it')" %>
+
+
+  <% @followers.each do |site| %>
+    <%= link_to site_path(site), class: "img-polaroid follower" do %>
+      <img src="/images/old_default_user_photo/original.png" width=190>
+      <span><%= site.at_permalink %></span>
+    <% end %>
+  <% end %>
+
+
+
+
+</div>

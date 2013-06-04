@@ -10,8 +10,8 @@ Scenario: Standard Scenario (ignoring friends)
     And that @cerci is following @ned
     And that @jamie is following @ned
   When  I go to @ned's site page
-  Then  I should see "@ned's followers"
-    And I should see "Jamie Lannister"
-    And I should see "Cerci Lannister"
-    But I should not see "Bran Stark"
+  Then  I should see "View Followers"
+    And I should see "@jamie"
+    And I should see "@cerci"
+    But I should not see "@bran"
 

@@ -10,7 +10,8 @@ class SitesController < ApplicationController
 
   # GET /:permalink
   def show
-    @posts = @site.followings_posts
+    @posts = @site.followings_posts.limit(10)
+    @followers = @site.followers.limit(10).map(&:other)
   end
 
   # GET /:permalink/follow

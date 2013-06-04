@@ -302,7 +302,6 @@ ActiveRecord::Schema.define(version: 20130601142152) do
     t.string   "website"
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "sex",                    default: 0
     t.date     "born_on"
     t.boolean  "likes_male",             default: false
     t.boolean  "likes_female",           default: false
