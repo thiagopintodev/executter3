@@ -12,7 +12,9 @@ class AddSiteToPosts < ActiveRecord::Migration
       s = u.site
 
       puts "#{i+=1} / #{p_count} | ##{p.id} @#{s.permalink}"
-      p.update! site_id: s.id
+      # p.update! site_id: s.id
+      # since this script has been tested against the real database several times, validations are no longer necessary
+      p.update_attribute :site_id, s.id
     end
   end
 
