@@ -9,9 +9,8 @@ Scenario: Standard Scenario (ignoring friends)
     And I am a visitor
     And that @cerci is following @ned
     And that @jamie is following @ned
-  When  I go to @ned's site page
-  Then  I should see "View Followers"
+   When I go to @ned's site page
     And I should see "@jamie"
     And I should see "@cerci"
     But I should not see "@bran"
-
+    And I should see "2 Followers"

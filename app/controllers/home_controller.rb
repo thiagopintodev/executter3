@@ -9,7 +9,7 @@ class HomeController < ApplicationController
 
   def index
     @site = me.site
-    @posts = @site.followings_posts
+    @posts = @site.followings_posts.limit(10)
   end
 
 end

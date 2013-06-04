@@ -31,13 +31,15 @@
 <div id="followers____" class="sidebar-right-1">
   <% if not me %>
     <%= link_to icon_text("plus-sign", "Join Followers"), root_path, class: "my-big-button img-polaroid" %>
+  <% elsif not @relations %>
+    
   <% elsif @relations.am_follower %>
     <%= link_to icon_text("remove-sign", "Unfollow"), site_unfollow_path(@site), class: "my-small-button img-polaroid" %>
   <% else %>
     <%= link_to icon_text("plus-sign", "Join Followers"), site_follow_path(@site), class: "my-big-button img-polaroid" %>
   <% end %>
 
-  <%= link_to icon_text("reorder",   "View Followers"), '#', class: "my-big-button img-polaroid", onclick: "alert('not implemented, wait for it')" %>
+  <%= link_to icon_text("reorder", "#{@followers_count} Followers"), '#', class: "my-big-button img-polaroid", onclick: "alert('not implemented, wait for it')" %>
 
 
   <% @followers.each do |site| %>

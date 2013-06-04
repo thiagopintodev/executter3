@@ -12,6 +12,7 @@ class SitesController < ApplicationController
   def show
     @posts = @site.followings_posts.limit(10)
     @followers = @site.followers.limit(10).map(&:other)
+    @followers_count = @site.followers.count
   end
 
   # GET /:permalink/follow
@@ -26,6 +27,4 @@ class SitesController < ApplicationController
     redirect_to @site, notice: "You no longer follow #{@site.owner.full_name}"
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
 end

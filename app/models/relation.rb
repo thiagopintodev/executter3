@@ -29,6 +29,7 @@ class Relation < ActiveRecord::Base
     end
 
     def get_relations(my_site, site)
+      return if my_site == site
       # I am the owner of this relationship
       #
       # following   how I subscribed to them

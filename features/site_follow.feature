@@ -26,3 +26,7 @@ Scenario: I Unfollow
   When  I follow "Unfollow"
   Then  I should see "You no longer follow Eddard Stark"
 
+Scenario: Shouldn't follow self
+  Given I am @james
+    And I am on @james's site page
+  When  I should not see "Join Followers"
