@@ -10,7 +10,8 @@ Scenario: Standard Scenario (ignoring friends)
     And that @cerci is following @ned
     And that @jamie is following @ned
    When I go to @ned's site page
-    And I should see "@jamie"
-    And I should see "@cerci"
-    But I should not see "@bran"
-    And I should see "2 Followers"
+    And I should see the selector ".follower_jamie"
+    And I should see the selector ".follower_cerci"
+    But I should not see the selector ".follower_bran"
+    And I should see "2 Follow"
+    And I should see "Following 0"

@@ -20,8 +20,8 @@ class CreateFollowersAndFollowings < ActiveRecord::Migration
       i+=1
       u1 = User.find r.attributes['user_id']
       u2 = User.find r.attributes['user2_id']
-      u1_follows_u2 = r.attributes['is_followed']
-      u2_follows_u1 = r.attributes['is_follower']
+      u1_follows_u2 = r.attributes['is_follower']
+      u2_follows_u1 = r.attributes['is_followed']
       s1 = u1.site
       s2 = u2.site
       

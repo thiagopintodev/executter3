@@ -5,13 +5,15 @@ class Site < ActiveRecord::Base
   has_many :posts
   has_many :followers
   has_many :followings
+  has_many :follower_sites,  through: :followers
+  has_many :following_sites, through: :followings
 
   #-> { where is_active: true },
   #TODO: friends
   
   def followings_posts
     site_ids = followings.pluck(:other_id) + [id]
-    Post.where(site_id: site_ids)
+    Post.where(site_id: site_ids).order(id: :desc)
   end
 
   # this method is only used in test features, maybe should move to test logic
