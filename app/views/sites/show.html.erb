@@ -1,7 +1,10 @@
 <div style="float:left;display:inline-block;width:600px">
   
 <section class="section">
+
+
 <p>
+  <center><%= image_tag @site.owner.gravatar_or_default(200), width: 200 %></center>
   <strong>Owner:</strong>
   <%= @site.owner.full_name %>
 </p>
@@ -30,7 +33,7 @@
 
   <% @followings.each do |site| %>
     <%= link_to site_path(site), class: "img-polaroid follower" do %>
-      <img src="/images/old_default_user_photo/original.png" width=190>
+      <%= image_tag site.owner.gravatar_or_default(190), width: 190 %>
       <span><%= site.at_permalink %></span>
     <% end %>
   <% end %>
@@ -53,7 +56,7 @@
 
   <% @followers.each do |site| %>
     <%= link_to site_path(site), class: "img-polaroid follower follower_#{site.downcased}" do %>
-      <img src="/images/old_default_user_photo/original.png" width=60>
+      <%= image_tag site.owner.gravatar_or_default(60), width: 60 %>
     <% end %>
   <% end %>
 
