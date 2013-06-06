@@ -47,11 +47,11 @@ class User < ActiveRecord::Base
     
     module ClassMethods
       def digest_it(s)
-        s.object_id.to_s
+        Digest::MD5.hexdigest(s.strip)
       end
       def sign_in(email, password)
         User.where(email: email.downcase).first_or_initialize.tap do |user|
-          if user.new_record? || user.password_is?(password)
+          unless user.persisted? && user.password_is?(password)
             user.errors[:password] << "email and password do not match"
           end
         end

@@ -17,7 +17,7 @@ Given /^I am @james$/ do
 
   visit sign_in_path
   fill_in "Email",    :with => 'james@rubyfactory.net'
-  fill_in "Password", :with => 'secret!'
+  fill_in "Password", :with => 'secure!'
   click_button "Connect"
 
   # cucumber requires all step calls to be a Given :(

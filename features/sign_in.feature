@@ -4,11 +4,20 @@ Feature: Sign In
   As a visitor
   I want to be able so sign in from various pages
 
-  Scenario: Signs in with invalid credentials
+  Scenario: Signs in with invalid email
     Given I go to the home page
     When I fill in the sign in header with the following:
       | Email     | invalid@invalid.com |
       | Password  | invalid             |
+      And I press "Connect"
+    Then I should see "email and password do not match"
+
+  Scenario: Signs in with invalid password
+    Given James Pinto
+    Given I go to the home page
+    When  I fill in the sign in header with the following:
+      | Email     | james@rubyfactory.net |
+      | Password  | invalid               |
       And I press "Connect"
     Then I should see "email and password do not match"
 
