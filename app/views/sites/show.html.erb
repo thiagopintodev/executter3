@@ -1,25 +1,24 @@
-<div style="float:left;display:inline-block;width:600px">
+<div style="float:left;display:inline-block;width:760px">
   
-<section class="section">
+<section>
 
 
 <p>
-  <center><%= image_tag @site.owner.gravatar_or_default(200), width: 200 %></center>
+  <center><%= image_tag @site.image_url(200), width: 200 %></center>
+  <center>
+</p>
+<p>
   <strong>Owner:</strong>
   <%= @site.owner.full_name %>
-</p>
-
-<p>
   <strong>Permalink:</strong>
   <%= @site.at_permalink %>
+  </center>
 </p>
+
 </section>
 
-<section id="posts" class="section">
-<h1>posts by <%= @site.at_permalink %> (<%= @site.owner.full_name %>)</h1>
-  <% @posts.each do |post| %>
-    <p><%= link_to post.body, post %></p>
-  <% end %>
+<section id="posts">
+  <%= render '/posts/posts' %>
 </section>
 
 </div>
@@ -33,7 +32,7 @@
 
   <% @followings.each do |site| %>
     <%= link_to site_path(site), class: "img-polaroid follower" do %>
-      <%= image_tag site.owner.gravatar_or_default(190), width: 190 %>
+      <%= image_tag site.image_url(190), width: 190 %>
       <span><%= site.at_permalink %></span>
     <% end %>
   <% end %>
@@ -56,7 +55,7 @@
 
   <% @followers.each do |site| %>
     <%= link_to site_path(site), class: "img-polaroid follower follower_#{site.downcased}" do %>
-      <%= image_tag site.owner.gravatar_or_default(60), width: 60 %>
+      <%= image_tag site.image_url(60), width: 60 %>
     <% end %>
   <% end %>
 

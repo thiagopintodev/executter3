@@ -50,4 +50,8 @@ class Site < ActiveRecord::Base
   end
 
   alias :u_ :at_permalink
+
+  def image_url(size=nil)
+    owner.gravatar_or_default(size)
+  end
 end

@@ -1,0 +1,13 @@
+<% @posts.each do |post| %>
+  <div class="post">
+    <%= link_to image_tag(post.site.image_url(40), width: 40), post.site, class: "photo", style: ""  %>
+    <p class="text">
+      <%= link_to post.body, post %>
+    </p>
+    <input class="reply-trigger" type="text" placeholder="reply..." />
+    <div class="reply-box">
+      <textarea rows="2"></textarea>
+      <a href="#" class="btn" onclick="alert('not working yet');$(this).closest('.reply-box').hide('fast')">reply!</a>
+    </div>
+  </div>
+<% end %>
