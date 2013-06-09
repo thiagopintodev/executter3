@@ -33,6 +33,7 @@ gem 'font-awesome-sass-rails'
 
 group :development do
   gem 'thin'
+  gem 'rails-footnotes', github: 'tommireinikainen/rails-footnotes'
 end
 
 group :production do

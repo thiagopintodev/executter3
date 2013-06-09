@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/tommireinikainen/rails-footnotes.git
+  revision: 2f6f38808b052ba7e1b59107acdc6144a3ec448e
+  specs:
+    rails-footnotes (3.7.9)
+      rails (>= 3.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -179,6 +186,7 @@ DEPENDENCIES
   permissions
   pg
   rails (= 4.0.0.rc1)
+  rails-footnotes!
   sass-rails (~> 4.0.0.rc1)
   sdoc
   simple_form
