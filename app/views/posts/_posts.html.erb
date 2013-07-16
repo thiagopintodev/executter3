@@ -1,6 +1,6 @@
 <% @posts.each do |post| %>
   <div class="post">
-    <%= link_to image_tag(post.site.image_url(40), width: 40), post.site, class: "photo", style: ""  %>
+    <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=40>}.html_safe, post.site, class: "photo", style: ""  %>
     <p class="text">
       <%= link_to post.body, post %>
     </p>
