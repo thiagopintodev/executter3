@@ -2,6 +2,7 @@
   <div class="post">
     <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=40>}.html_safe, post.site, class: "photo", style: ""  %>
     <p class="text">
+      <%= link_to post.site.l_, post.site %> posted:
       <%= link_to post.body, post %>
     </p>
     <input class="reply-trigger" type="text" placeholder="reply..." />

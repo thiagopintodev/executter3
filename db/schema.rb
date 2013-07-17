@@ -203,14 +203,14 @@ ActiveRecord::Schema.define(version: 20130601142152) do
   create_table "sites", force: true do |t|
     t.string   "owner_type"
     t.integer  "owner_id"
-    t.string   "permalink"
-    t.string   "downcased"
+    t.string   "link"
+    t.string   "link_downcased"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "sites", ["link"], name: "index_sites_on_link", using: :btree
   add_index "sites", ["owner_type", "owner_id"], name: "index_sites_on_owner_type_and_owner_id", using: :btree
-  add_index "sites", ["permalink"], name: "index_sites_on_permalink", using: :btree
 
   create_table "smiles", force: true do |t|
     t.string   "key"

@@ -6,8 +6,8 @@ end
 Given(/^that (.+) is following (.+)$/) do |author, sentence|
   #sentence: @ned and @cerci
   author = Site.find_it author
-  array_from_sentence(sentence).each do |permalink|
-    author.follow! permalink
+  array_from_sentence(sentence).each do |link|
+    author.follow! link
   end
 end
 

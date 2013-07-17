@@ -8,6 +8,8 @@ class Site < ActiveRecord::Base
   has_many :follower_sites,  through: :followers
   has_many :following_sites, through: :followings
 
+  validates_presence_of :owner
+
   #-> { where is_active: true },
   #TODO: friends
   
@@ -29,29 +31,24 @@ class Site < ActiveRecord::Base
   end
 
 
-  validates_uniqueness_of :permalink, case_sensitive: false
+  validates_uniqueness_of :link, case_sensitive: false
 
-  def permalink=(permalink)
-    write_attribute(:permalink, permalink)
-    self.downcased = permalink.downcase
+  def link=(link)
+    write_attribute(:link, link)
+    self.link_downcased = link.downcase
   end
 
   def self.find_it(s)
     s1 = s.strip.downcase.delete("@")
-    where(downcased: s1).first || "site_record_not_found_#{s}".to_sym
+    where(link_downcased: s1).first || "site_record_not_found_#{s}".to_sym
   end
 
   def to_param
-    permalink
+    link
   end
 
-  def at_permalink
-    "@#{permalink}"
+  def l_
+    "@#{link}"
   end
 
-  alias :u_ :at_permalink
-
-  def image_url(size=nil)
-    owner.gravatar_or_default(size)
-  end
 end

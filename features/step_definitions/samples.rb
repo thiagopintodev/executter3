@@ -3,7 +3,7 @@ Given /^James Pinto$/ do
   
   steps %{
     Given the following user records
-      | first_name  | last_name | username | email                 | password | gender | born_on    |
+      | first_name  | last_name | link     | email                 | password | gender | born_on    |
       | James       | Pinto     | james    | james@rubyfactory.net | secure!  | male   | 2000-01-01 |
   }
 
@@ -13,7 +13,7 @@ Given /^the sample users$/ do
   
   steps %{ 
     Given the following user records
-      | first_name  | last_name | username | email                  | password | gender | born_on    |
+      | first_name  | last_name | link     | email                  | password | gender | born_on    |
       | Eddard      | Stark     | ned      | ned@stark.com          | secure!  | male   | 2000-01-01 |
       | Bran        | Stark     | bran     | bran@stark.com         | secure!  | male   | 2000-01-01 |
       | Cerci       | Lannister | cerci    | cerci@lannister.com    | secure!  | female | 2000-01-01 |

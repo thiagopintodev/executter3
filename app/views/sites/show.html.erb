@@ -10,8 +10,8 @@
 <p>
   <strong>Owner:</strong>
   <%= @site.owner.full_name %>
-  <strong>Permalink:</strong>
-  <%= @site.at_permalink %>
+  <strong>Link:</strong>
+  <%= @site.l_ %>
   </center>
 </p>
 
@@ -33,7 +33,7 @@
   <% @followings.each do |site| %>
     <%= link_to site_path(site), class: "img-polaroid follower" do %>
       <img src="/images/old_default_user_photo/original.png" width=190>
-      <span><%= site.at_permalink %></span>
+      <span><%= site.l_ %></span>
     <% end %>
   <% end %>
 
@@ -54,7 +54,7 @@
 
 
   <% @followers.each do |site| %>
-    <%= link_to site_path(site), class: "img-polaroid follower follower_#{site.downcased}" do %>
+    <%= link_to site_path(site), class: "img-polaroid follower follower_#{site.link_downcased}" do %>
       <img src="/images/old_default_user_photo/original.png" width=60>
     <% end %>
   <% end %>

@@ -8,9 +8,8 @@ Scenario: With Posts
   Given the sample users
     And I am @james
     And that @james  has posted "Im @james"
-    And that @ned         has posted "Im @ned"
+    And that @ned    has posted "Im @ned"
   When  I go to @ned's site page
   Then  I should see "Eddard Stark"
-    And I should see "posts by @ned (Eddard Stark)"
     And I should see "Im @ned"
     But I should not see "Im @james"

@@ -36,9 +36,9 @@ Given /^I am @james$/ do
 end
 
 
-# Given /^I have one\s+user "([^\"]*)" with email "([^\"]*)" and password "([^\"]*)"$/ do |username, email, password|
+# Given /^I have one\s+user "([^\"]*)" with email "([^\"]*)" and password "([^\"]*)"$/ do |link, email, password|
 
-#   @user = User.new :username    => username,
+#   @user = User.new :link    => link,
 #                    :email       => email,
 #                    :password    => password,
 #                    :first_name  => "Ronald",

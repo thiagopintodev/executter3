@@ -8,7 +8,7 @@ class SignUpController < ApplicationController
 
   # POST /sign_up
   def create
-    user_params = params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :born_on, :gender) #city
+    user_params = params.require(:user).permit(:first_name, :last_name, :link, :email, :password, :born_on, :gender) #city
     @user = User.new(user_params)
 
     if @user.save

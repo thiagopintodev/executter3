@@ -1,5 +1,15 @@
 class User < ActiveRecord::Base
 
+  attr_accessor :link
+
+  delegate :link, :link=, :l_,
+           to: :site,
+           prefix: true
+
+  alias :link :site_link
+  alias :link= :site_link=
+  alias :l_ :site_l_
+
   include Authentication
 
 
@@ -10,22 +20,20 @@ class User < ActiveRecord::Base
   validates :gender,      presence: true, inclusion: {in: USER_GENDERS}
   validates :born_on,     presence: true
   
-  validates :username, presence: true, exclusion: { in: %w(admin superuser) }
+  validates :link, presence: true, exclusion: { in: %w(admin superuser) }
+  validates :site, presence: true
 
-  has_one :site, as: :owner, autosave: true
+  has_one :site, as: :owner
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
-  def username=(username)
-    self.site ||= build_site
-    self.site.permalink=username
+  def site
+    association(:site).reader || association(:site).build
   end
 
-  def username
-    site.permalink if site
-  end
+
 
   
 end

@@ -8,7 +8,7 @@ class SitesController < ApplicationController
     end
   end
 
-  # GET /:permalink
+  # GET /:link
   def show
     @posts = @site.posts.limit(10)
     #@followers        = @site.followers.limit(17).map(&:other)
@@ -20,13 +20,13 @@ class SitesController < ApplicationController
     @followings_count = @site.followings.count
   end
 
-  # GET /:permalink/follow
+  # GET /:link/follow
   def follow
     Relation.follow! @relations
     redirect_to @site, notice: "You are now following #{@site.owner.full_name}"
   end
 
-  # GET /:permalink/unfollow
+  # GET /:link/unfollow
   def unfollow
     Relation.unfollow! @relations
     redirect_to @site, notice: "You no longer follow #{@site.owner.full_name}"
