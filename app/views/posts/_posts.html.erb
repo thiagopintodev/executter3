@@ -3,12 +3,25 @@
     <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=40>}.html_safe, post.site, class: "photo", style: ""  %>
     <p class="text">
       <%= link_to post.site.l_, post.site %> posted:
-      <%= link_to post.body, post %>
+      <%= link_to post.text, post %>
     </p>
     <input class="reply-trigger" type="text" placeholder="reply..." />
     <div class="reply-box">
       <textarea rows="2"></textarea>
       <a href="#" class="btn" onclick="alert('not working yet');$(this).closest('.reply-box').hide('fast')">reply!</a>
     </div>
+
+    <div class="comments">
+      <% post.comments.each do |comment| %>
+        <div class="comment">
+          <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=25>}.html_safe, post.site, class: "photo", style: ""  %>
+          <p class="text">
+            <%= link_to comment.site.l_, comment.site %> commented:
+            <%= link_to comment.text, comment %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+
   </div>
 <% end %>

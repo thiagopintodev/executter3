@@ -1,27 +1,4 @@
 <div style="float:left;display:inline-block;width:760px">
-  
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
-
-
-<section id="new_post" class="section">
-  <h1>New Post</h1>
-  <hr>
-  <%# '.form-horizontal', '.form-inline', '.form-search' or
-    '.form-vertical' %>
-  <%= simple_form_for(Post.new, html: {class: 'form-horizontal' }) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :body, as: :text %>
-    </div>
-
-    <div class="form-actions">
-      <%= f.button :submit, "Executter" %>
-    </div>
-  <% end %>
-
-</section>
 
 <section id="posts">
   <%= render '/posts/posts' %>
@@ -29,3 +6,5 @@
 
 
 </div>
+
+<%= render '/sites/relations_sidebars' %>

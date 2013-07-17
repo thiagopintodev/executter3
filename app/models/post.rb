@@ -1,18 +1,24 @@
 class Post < ActiveRecord::Base
   belongs_to :site
 
+  has_many :comments
+
   validates :site_id, presence: true
-  validates :body, presence: true, length: { in: 2..196 }
+  validates :text, presence: true, length: { in: 2..196 }
+  validates :verb, presence: true
+
 
   before_create do
     self.remote_ip ||= '0.0.0.0'
-    self.files_categories = 'status'
   end
 
   def to_param
-    "#{id}-#{body[0..30].parameterize}"
+    "#{id}-#{text[0..30].parameterize}"
   end
 
-end
+  VERB_POSTED = 'posted'
 
-#TODO: remove column user_id
+  ORIGIN_WEB = 'web'
+  ORIGIN_MOBILE = 'mobile'
+
+end

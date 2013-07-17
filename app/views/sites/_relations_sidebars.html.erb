@@ -1,0 +1,47 @@
+
+
+<div id="profile____" class="sidebar-right-top">
+
+  <img src="/images/old_default_user_photo/original.png" width=160>
+
+  <p><strong><%= @site.owner.full_name %></strong></p>
+  <p><%= @site.l_ %></p>
+
+</div>
+
+<div id="followings____" class="sidebar-right-2">
+  <%= link_to icon_text("reorder", "Following #{@followings_count}"), '#', class: "my-big-button img-polaroid", onclick: "alert('not implemented, wait for it')" %>
+
+
+  <% @followings.each do |site| %>
+    <%= link_to site_path(site), class: "img-polaroid follower" do %>
+      <img src="/images/old_default_user_photo/original.png" width=190>
+      <span><%= site.l_ %></span>
+    <% end %>
+  <% end %>
+
+</div>
+
+<div id="followers____" class="sidebar-right-1">
+  <%= link_to icon_text("reorder", pluralize(@followers_count, 'Follows', 'Follow')), '#', class: "my-big-button img-polaroid", onclick: "alert('not implemented, wait for it')", id: "followers_button" %>
+
+
+  <% if not me %>
+    <%= link_to icon_text("plus-sign", "Follow"), root_path, class: "my-big-button img-polaroid", id: "follow_button" %>
+  <% elsif @relations and not @relations.am_follower %>
+    <%= link_to icon_text("plus-sign", "Follow"), site_follow_path(@site), class: "my-big-button img-polaroid", id: "follow_button" %>
+  <% end %>
+    
+
+
+  <% @followers.each do |site| %>
+    <%= link_to site_path(site), class: "img-polaroid follower follower_#{site.link_downcased}" do %>
+      <img src="/images/old_default_user_photo/original.png" width=60>
+    <% end %>
+  <% end %>
+
+  <% if @relations && @relations.am_follower %>
+    <%= link_to icon_text("remove-sign", "unfollow"), site_unfollow_path(@site), class: "my-small-button img-polaroid", id: "unfollow_button" %>
+  <% end %>
+
+</div>

@@ -28,6 +28,8 @@ class PostsController < ApplicationController
   # POST /posts
   def create
     @post.remote_ip = request.remote_ip
+    @post.verb      = Post::VERB_POSTED
+
     if @post.save
       redirect_to home_path, notice: 'Post was successfully created.'
     else
@@ -54,7 +56,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:body)
+      params.require(:post).permit(:text)
     end
 
 end

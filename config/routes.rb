@@ -1,6 +1,8 @@
 Ex3::Application.routes.draw do
 
 
+  resources :comments
+
   resources :posts, only: [:show, :create, :destroy]
 
   #get  "sign_out" => "sign_up#sign_out"

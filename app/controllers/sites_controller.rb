@@ -10,12 +10,14 @@ class SitesController < ApplicationController
 
   # GET /:link
   def show
+    #posts
     @posts = @site.posts.limit(10)
-    #@followers        = @site.followers.limit(17).map(&:other)
+
+    #@followers
     @followers        = @site.follower_sites.limit(17)
     @followers_count  = @site.followers.count
 
-    #@followings       = @site.followings.limit(10).map(&:other)
+    #@followings
     @followings       = @site.following_sites.limit(10)
     @followings_count = @site.followings.count
   end

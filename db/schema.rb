@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130601142152) do
+ActiveRecord::Schema.define(version: 20130717170150) do
 
   create_table "cities", force: true do |t|
     t.integer  "city_base_id"
@@ -38,6 +38,23 @@ ActiveRecord::Schema.define(version: 20130601142152) do
 
   add_index "city_bases", ["data"], name: "index_city_bases_on_data", using: :btree
   add_index "city_bases", ["label"], name: "index_city_bases_on_label", using: :btree
+
+  create_table "comments", force: true do |t|
+    t.integer  "post_id"
+    t.integer  "site_id"
+    t.text     "text"
+    t.string   "verb"
+    t.string   "origin",        default: "web"
+    t.string   "file"
+    t.string   "remote_ip"
+    t.integer  "likes_count",   default: 0
+    t.integer  "replies_count", default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["site_id"], name: "index_comments_on_site_id", using: :btree
 
   create_table "followers", force: true do |t|
     t.integer  "site_id"
@@ -159,34 +176,20 @@ ActiveRecord::Schema.define(version: 20130601142152) do
   add_index "post_words", ["word"], name: "index_post_words_on_word", using: :btree
 
   create_table "posts", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.string   "placement"
-    t.boolean  "on_timeline",             default: true
-    t.string   "files_categories",        default: "status"
-    t.string   "files_extensions"
-    t.boolean  "generated_notifications", default: false
-    t.string   "body"
-    t.string   "remote_ip",               default: "-"
-    t.integer  "likes_count",             default: 0
-    t.integer  "posts_count",             default: 0
-    t.integer  "post_files_count",        default: 0
+    t.string   "text"
+    t.string   "remote_ip",      default: "-"
+    t.integer  "likes_count",    default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "generated_words",         default: false
-    t.string   "origin",                  default: "web"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
-    t.string   "link_url"
+    t.string   "origin",         default: "web"
     t.integer  "site_id"
+    t.integer  "comments_count", default: 0
+    t.string   "file"
+    t.string   "photo_url"
+    t.string   "verb"
   end
 
-  add_index "posts", ["post_id"], name: "index_posts_on_post_id", using: :btree
   add_index "posts", ["site_id"], name: "index_posts_on_site_id", using: :btree
-  add_index "posts", ["user_id", "on_timeline"], name: "index_posts_on_user_id_and_on_timeline", using: :btree
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "relations", force: true do |t|
     t.integer  "user_id"

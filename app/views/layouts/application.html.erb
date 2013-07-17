@@ -42,6 +42,22 @@
 </div>
 
 
+
+<footer>
+
+  <div class="container">
+
+    <%= form_for(Post.new) do |f| %>
+
+      <%= f.text_field :text, autocomplete: 'off' %>
+      <%= f.submit "Executter", class: 'btn btn-executter' %>
+
+    <% end %>
+
+  </div>
+
+</footer>
+
 <script type="text/javascript">
 
 

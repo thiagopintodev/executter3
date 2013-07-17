@@ -31,7 +31,7 @@ class CreateFollowersAndFollowings < ActiveRecord::Migration
       if i % 10 == 0
         puts "-"
         puts "#{i} / #{r_count} | ##{r.id}"
-        puts "#{Following.count} Following.count | #{Follower.count} Follower.count"
+        #puts "#{Following.count} Following.count | #{Follower.count} Follower.count"
       end
 
     end

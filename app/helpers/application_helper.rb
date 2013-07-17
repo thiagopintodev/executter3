@@ -20,7 +20,7 @@ module ApplicationHelper
     #elsif me.role.inquiry.admin?
     else
       _page_tabs({"Home"      => home_path,
-                  me.l_     => site_path(me.site),
+                  me.l_       => site_path(me.site),
                   "Settings"  => '/',
                   "Sign Out"  => sign_out_path
                   })

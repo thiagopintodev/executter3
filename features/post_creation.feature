@@ -7,8 +7,7 @@ Feature: Post Creation
   Scenario: Post a text
     Given I am @james
       And I am on the home page
-    When I fill in the following:
-      | Body     | lalala |
+    When I fill in "post_text" with "lalala"
      And I press "Executter"
     Then I should see "Post was successfully created."
     #

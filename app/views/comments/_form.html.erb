@@ -1,0 +1,21 @@
+<%# '.form-horizontal', '.form-inline', '.form-search' or
+  '.form-vertical' %>
+<%= simple_form_for(@comment, html: {class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :post %>
+    <%= f.association :site %>
+    <%= f.input :text %>
+    <%= f.input :file %>
+    <%= f.input :likes_count %>
+    <%= f.input :replies_count %>
+    <%= f.input :remote_ip %>
+    <%= f.input :origin %>
+    <%= f.input :reason %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

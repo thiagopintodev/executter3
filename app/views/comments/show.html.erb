@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Post:</strong>
+  <%= @comment.post %>
+</p>
+
+<p>
+  <strong>Site:</strong>
+  <%= @comment.site %>
+</p>
+
+<p>
+  <strong>Text:</strong>
+  <%= @comment.text %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @comment.file %>
+</p>
+
+<p>
+  <strong>Likes count:</strong>
+  <%= @comment.likes_count %>
+</p>
+
+<p>
+  <strong>Replies count:</strong>
+  <%= @comment.replies_count %>
+</p>
+
+<p>
+  <strong>Remote ip:</strong>
+  <%= @comment.remote_ip %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @comment.origin %>
+</p>
+
+<p>
+  <strong>Reason:</strong>
+  <%= @comment.reason %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>

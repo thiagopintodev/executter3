@@ -13,7 +13,7 @@ end
 
 Given(/^that (.+) has posted "(.*?)"$/) do |author, text|
   site = Site.find_it author
-  site.posts.create! body: text
+  site.posts.create! text: text, verb: Post::VERB_POSTED
 end
 
 
