@@ -4,7 +4,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.association :site %>
+    <%= f.input :verb %>
     <%= f.input :text %>
+    <%= f.input :comments_count %>
   </div>
 
   <div class="form-actions">

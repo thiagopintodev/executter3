@@ -47,7 +47,7 @@
 
   <div class="container">
 
-    <%= form_for(Post.new) do |f| %>
+    <%= form_for(Post.new, remote: true, format: 'json') do |f| %>
 
       <%= f.text_field :text, autocomplete: 'off' %>
       <%= f.submit "Executter", class: 'btn btn-executter' %>
@@ -60,6 +60,67 @@
 
 <script type="text/javascript">
 
+
+$(document).ready(ready2);
+$(document).on('page:load', ready2);
+
+function ready2() {
+  
+  $('.post .reply-trigger').on('focus', function() {
+    $(this).fadeOut().closest('.post').find('.reply-box').fadeIn().find('textarea').focus();
+  })
+
+
+  $("form#new_post").on("ajax:complete", function(e, data) {
+
+    if (data.status == 201) {
+      //
+    } else {
+      bad =  {e: e, data: data};
+      alert("an error #"+data.status+" has occurred.\n\n"+data.responseText);
+    }
+  })
+
+}
+
+// comments: []
+// comments_count: 0
+// site: {id:3, link:thiago}
+// site_id: 3
+// text: "bbbbbbbbbbbbbbbbbbbb"
+// verb: "posted"
+
+
+// {
+//   site_id: 2
+//   verb: posted
+//   text: aaaaaaaaa
+//   comments_count: 2
+//   site: {
+//     id: 2
+//     link: aaaa
+//   }
+//   comments: [
+//     {
+//       id: 13402
+//       text: bbbbbbbbbbbb
+//       site_id: 1680
+//       site: {
+//         id: 1680
+//         link: aaaa
+//       }
+//     }
+//     {
+//       id: 13371
+//       text: ccccccccccccc
+//       site_id: 3909
+//       site: {
+//         id: 3909
+//         link: aaaa
+//       }
+//     }
+//   ]
+// }
 
 </script>
 

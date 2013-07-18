@@ -10,8 +10,6 @@ Feature: Post Creation
     When I fill in "post_text" with "lalala"
      And I press "Executter"
     Then I should see "Post was successfully created."
-    #
-    When I go to @james's site page
-    Then I should see "lalala"
+     And I should see "lalala"
 
 

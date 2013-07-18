@@ -3,7 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>Body</th>
+      <th>Site</th>
+      <th>Verb</th>
+      <th>Text</th>
+      <th>Comments count</th>
       <th></th>
       <th></th>
       <th></th>
@@ -12,16 +15,19 @@
 
   <tbody>
     <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.text %></td>
-      <td><%= link_to 'Show', post %></td>
-      <td><%= link_to 'Edit', edit_post_path(post) %></td>
-      <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+      <tr>
+        <td><%= post.site %></td>
+        <td><%= post.verb %></td>
+        <td><%= post.text %></td>
+        <td><%= post.comments_count %></td>
+        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
-<br />
+<br>
 
 <%= link_to 'New Post', new_post_path %>
