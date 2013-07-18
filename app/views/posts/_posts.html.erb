@@ -1,4 +1,98 @@
+<script type="text/javascript">
+  
+$(function() {
+
+a = [
 <% @posts.each do |post| %>
+  <%= raw render(partial: '/posts/post.json', object: post) %>,
+<% end %>
+]
+setPosts(a)
+
+})
+</script>
+
+<section id="posts" ng-controller="PostsCtrl" data-url="<%= @url %>">
+
+
+  <div class="post" ng-repeat="post in list">
+
+    <a class="photo" href="/{{post.link}}" style=""><img src="/images/old_default_user_photo/original.png" width="40"></a>
+    <p class="text" data-id="{{post.id}}">
+      <a href="/{{post.site.link}}">@{{post.site.link}}</a>
+      {{post.verb}}:
+      <a href="/">{{post.text}}</a>
+    </p>
+    <input class="reply-trigger" type="text" placeholder="reply...">
+    <div class="reply-box">
+      <textarea rows="2"></textarea>
+      <a href="#" class="btn" onclick="alert('not working yet');$(this).closest('.reply-box').hide('fast')">reply!</a>
+    </div>
+
+    <div class="comments">
+
+      <div class="comment" ng:repeat="comment in post.comments">
+        <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="25"></a>
+        <p class="text">
+          <a href="/{{comment.site.link}}">@{{comment.site.link}}</a>
+          {{comment.verb}}:
+          <a href="/">{{comment.text}}</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <%= link_to "MORE", '#', id: 'more', class: 'btn btn-large btn-block' %>
+
+</section>
+
+
+
+
+
+
+
+
+
+<% #@posts.each do |post| %>
+<% if false %>
+
+
+
+<!-- 
+<div class="post">
+
+  <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="40"></a>
+  <p class="text">
+    <a href="/edgala">@edgala</a> posted:
+    <a href="/posts/162416-seguindo-o-horoscopo-do-execut">Seguindo o @horoscopo do Executter! :D</a>
+  </p>
+  <input class="reply-trigger" type="text" placeholder="reply...">
+  <div class="reply-box">
+    <textarea rows="2"></textarea>
+    <a href="#" class="btn" onclick="alert('not working yet');$(this).closest('.reply-box').hide('fast')">reply!</a>
+  </div>
+
+  <div class="comments">
+      <div class="comment">
+        <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="25"></a>
+        <p class="text">
+          <a href="/paty">@paty</a> commented:
+          <a href="/comments/13402">:D aaaaae ! </a>
+        </p>
+      </div>
+      <div class="comment">
+        <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="25"></a>
+        <p class="text">
+          <a href="/psicosmile">@psicosmile</a> commented:
+          <a href="/comments/13371">bom para ficar informado heheeheh</a>
+        </p>
+      </div>
+  </div>
+
+</div>
+ -->
   <div class="post">
     <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=40>}.html_safe, post.site, class: "photo", style: ""  %>
     <p class="text">

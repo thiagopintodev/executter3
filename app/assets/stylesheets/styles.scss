@@ -11,66 +11,78 @@
 }
 
 
-.sidebar-right-2 {
-  float:right;
-  display: inline-block;
-  min-height: 800px;
-  width: 100px;
 
-  .img-polaroid {
-    display:block; margin-bottom: 10px; margin-left: 10px;
-    font-size:10px;
-    &:hover {
-      text-decoration: none;
-      span { text-decoration: underline; }
+#sidebar-right {
+  display: inline-block;
+  width: 170px;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+
+
+  .sidebar-right-2 {
+    float:right;
+    display: inline-block;
+    min-height: 800px;
+    width: 100px;
+
+    .img-polaroid {
+      display:block; margin-bottom: 10px; margin-left: 10px;
+      font-size:10px;
+      &:hover {
+        text-decoration: none;
+        span { text-decoration: underline; }
+      }
+    }
+    .follower {
+      span { display: block; }
+    }
+    .my-big-button {
+      text-align:center;
+      i { font-size: 50px;width:100%;margin:14px auto; }
+      span { display: block; }
+    }
+    .my-small-button {
+      font-size: 12px;
+      text-align: center;
     }
   }
-  .follower {
-    span { display: block; }
-  }
-  .my-big-button {
-    text-align:center;
-    i { font-size: 50px;width:100%;margin:14px auto; }
-    span { display: block; }
-  }
-  .my-small-button {
-    font-size: 12px;
-    text-align: center;
-  }
-}
 
 
 
-.sidebar-right-1 {
-  float:right;
-  display: inline-block;
-  min-height: 800px;
-  width: 70px;
+  .sidebar-right-1 {
+    float:right;
+    display: inline-block;
+    min-height: 800px;
+    width: 70px;
 
-  .img-polaroid {
-    display:block; margin-bottom: 10px; margin-left: 10px;
-    font-size:10px;
-    &:hover {
-      text-decoration: none;
-      span { text-decoration: underline; }
+    .img-polaroid {
+      display:block; margin-bottom: 10px; margin-left: 10px;
+      font-size:10px;
+      &:hover {
+        text-decoration: none;
+        span { text-decoration: underline; }
+      }
+    }
+    .follower {
+      span { display: block; }
+    }
+    .my-big-button {
+      text-align:center;
+      i { font-size: 20px;width:100%;margin:4px auto 0; }
+      span { display: block; line-height: 12px; }
+    }
+    .my-small-button {
+      font-size: 12px;
+      text-align: center;
     }
   }
-  .follower {
-    span { display: block; }
-  }
-  .my-big-button {
-    text-align:center;
-    i { font-size: 20px;width:100%;margin:4px auto 0; }
-    span { display: block; line-height: 12px; }
-  }
-  .my-small-button {
-    font-size: 12px;
-    text-align: center;
-  }
-}
 
-.sidebar-right-top {
-  float:right;
-  display: inline-block;
-  width: 160px;
+  .sidebar-right-top {
+    float:right;
+    display: inline-block;
+    width: 160px;
+  }
+
 }

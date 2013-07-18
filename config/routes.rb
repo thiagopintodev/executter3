@@ -38,10 +38,12 @@ Ex3::Application.routes.draw do
 
   root to: redirect("/sign_up")
   get "home" => "home#index"
+  get "home/posts"
 
   #must be last
   scope ":site_id", as: :site do
     get '' => "sites#show"
+    get 'posts' => "sites#posts"
     get 'follow' => "sites#follow"
     get 'unfollow' => "sites#unfollow"
   end

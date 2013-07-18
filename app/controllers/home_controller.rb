@@ -7,8 +7,10 @@ class HomeController < ApplicationController
     redirect_to sign_in_path, notice: "You have signed out."
   end
 
+  # GET /home
   def index
     @site = me.site
+    @url = home_posts_path(format: 'json', before_id: 'xxx')
     
     #posts
     @posts = @site.followings_posts.limit(10)
@@ -20,6 +22,13 @@ class HomeController < ApplicationController
     #@followings
     @followings       = @site.following_sites.limit(10)
     @followings_count = @site.followings.count
+  end
+
+  # GET /home/posts.json
+  def posts
+    @site = me.site
+    @posts = @site.posts.limit(10).before(params[:before_id])
+    render '/posts/_posts'
   end
 
 end

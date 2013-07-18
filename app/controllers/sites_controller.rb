@@ -12,6 +12,7 @@ class SitesController < ApplicationController
   def show
     #posts
     @posts = @site.posts.limit(10)
+    @url = site_posts_path(format: 'json', before_id: 'xxx')
 
     #@followers
     @followers        = @site.follower_sites.limit(17)
@@ -34,4 +35,9 @@ class SitesController < ApplicationController
     redirect_to @site, notice: "You no longer follow #{@site.owner.full_name}"
   end
 
+  # GET /:link/posts.json?before=:before_id
+  def posts
+    @posts = @site.posts.limit(10).before(params[:before_id])
+    render '/posts/_posts'
+  end
 end

@@ -96,8 +96,8 @@ footer {
   .post {
     //position: relative;
     //@include clearfix;
-    border-top: 1px solid #ccc;
-    padding-top: 20px;
+    border-top: 1px solid #e1e1e1;
+    padding-top: 10px;
     min-height: 40px;
     .photo {
       //position: absolute; top:20px;left:0;
@@ -112,8 +112,7 @@ footer {
     }
 
     .reply-trigger {
-      float: left;
-      margin-left: 20px;
+      float: right;
       width: 60px;
     }
     .reply-box {
@@ -126,9 +125,8 @@ footer {
         margin-left: 60px;
       }
       .btn {
-        float: left;
+        float: right;
         display: inline-block;
-        margin-left: 20px;
         width: 60px;
         padding: 4px 0px;
       }
@@ -137,13 +135,15 @@ footer {
   }
   .comments {
     clear: both;
-    margin-left: 15px;
 
     .comment {
       clear: both;
       margin-top: 10px;
       padding-top: 10px;
       min-height: 40px;
+      border-top: #efefef solid 1px;
+      padding-left: 15px;
+
       .photo {
         float: left;
       }

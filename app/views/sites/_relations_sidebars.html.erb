@@ -1,4 +1,5 @@
 
+<div id="sidebar-right">
 
 <div id="profile____" class="sidebar-right-top">
 
@@ -43,5 +44,8 @@
   <% if @relations && @relations.am_follower %>
     <%= link_to icon_text("remove-sign", "unfollow"), site_unfollow_path(@site), class: "my-small-button img-polaroid", id: "unfollow_button" %>
   <% end %>
+
+</div>
+
 
 </div>

@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
   validates :text, presence: true, length: { in: 2..196 }
   validates :verb, presence: true
 
+  scope :after,  lambda { |id| id ? where("posts.id > ?", id) : scoped }
+  scope :before, lambda { |id| id ? where("posts.id < ?", id) : scoped }
 
   before_create do
     self.remote_ip ||= '0.0.0.0'
