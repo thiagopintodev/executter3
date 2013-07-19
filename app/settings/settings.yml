@@ -20,5 +20,9 @@ production:
   <<: *defaults
   host: production.host
 
+quality:
+  <<: *defaults
+  host: quality.executter.com
+
 cucumber:
   <<: *test
