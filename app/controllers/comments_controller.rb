@@ -1,5 +1,3 @@
-
-
 class CommentsController < ApplicationController
   before_action :define_comment
 
@@ -49,12 +47,12 @@ class CommentsController < ApplicationController
     def define_comment
 
       load_resource do
-        before                                      { # load your nested resource's parent here if you need one }
+        before                                      {  } # load your nested resource's parent here if you need one 
         for_action(:index)                          { @comments = Comment.all                }
         for_action(:new)                            { @comment  = Comment.new                }
         for_action(:create)                         { @comment  = Comment.new(comment_params) }
         for_action(:show, :edit, :update, :destroy) { @comment  = Comment.find(params[:id])  }
-        after                                       { # run your authorization logic here if you need one }
+        after                                       {  }# run your authorization logic here if you need one
       end
       
     end
