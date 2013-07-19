@@ -1,3 +1,24 @@
+
+<script type="text/javascript">
+  
+//google maps
+
+function initialize() {
+  var input = /** @type {HTMLInputElement} */(document.getElementById('user_city_living_name'));
+  var autocomplete = new google.maps.places.Autocomplete(input);
+}
+
+$(function() {
+
+//wrapping this in $() is not needed at all
+google.maps.event.addDomListener(window, 'load', initialize);
+
+})
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+
 <div id="sign_up_box">
 <%= simple_form_for(@user, url: sign_up_path, :html => {:class => 'form-horizontal' }) do |f| %>
   <%= hidden_field_tag :return_url, params[:return_url] %>
@@ -7,7 +28,7 @@
     <%= f.input :first_name %>
     <%= f.input :last_name %>
     <%= f.input :link %>
-    <%#= f.input :city %>
+    <%= f.input :city_living_name, input_html: {autocomplete: 'off'}, label: "Your City" %>
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :born_on, as: :date,

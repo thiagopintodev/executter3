@@ -91,6 +91,15 @@ footer {
 }
 
 
+#sign_in_header {
+  border-bottom: #e1e1e1 dashed 2px;
+  margin-bottom: 20px;
+  .span3 {
+    margin-bottom: 0;
+    margin-right: 20px;
+  }
+}
+
 
 #posts {
   .post {
