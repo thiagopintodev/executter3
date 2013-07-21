@@ -8,6 +8,9 @@ defaults: &defaults
   twitter:
     consumer_key: 'Wmg5IdN6FY8692YIO7whJA'
     consumer_secret: 'q0SiLioJ2e7Ym8mFpea3icTZVnbSD1A9Izw23JMD4A'
+  aws:
+    access_key_id: 
+    secret_access_key: 
 
 development:
   <<: *defaults

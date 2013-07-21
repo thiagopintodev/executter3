@@ -9,6 +9,10 @@ gem 'simple_form'#, github: 'plataformatec/simple_form'
 gem 'hash_extension'
 gem 'validates_email_format_of'
 
+
+gem 'aws-sdk'
+
+
 gem 'permissions' #,
   #github: 'yakko/permissions'
   #path: '../permissions'
@@ -35,7 +39,7 @@ group :development do
   gem 'rails-footnotes', github: 'tommireinikainen/rails-footnotes'
 end
 
-group :production do
+group :production, :quality do
   gem 'unicorn'
 end
 
