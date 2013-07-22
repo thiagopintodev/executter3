@@ -33,6 +33,7 @@ gem 'angularjs-rails'
 
 gem 'bootstrap-sass'
 gem 'font-awesome-sass-rails'
+gem 'nokogiri', '1.5.10'
 
 group :development do
   gem 'thin'
