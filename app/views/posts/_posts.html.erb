@@ -1,4 +1,9 @@
+
 <script type="text/javascript">
+
+
+
+<% if false %>
 
 myposts = [
 <% @posts.each do |post| %>
@@ -6,7 +11,9 @@ myposts = [
 <% end %>
 ]
 
+<% end %>
 </script>
+
 
 
 <style type="text/css">
@@ -48,7 +55,10 @@ myposts = [
 </style>
 
 
-<section id="posts" ng-controller="PostsCtrl" data-url="<%= @url %>">
+<section  id="posts"
+          ng-controller="PostsCtrl"
+          data-url="<%= @url %>"
+          >
 
 
   <div class="post" ng-repeat="post in list" ng-animate=" 'animate' ">
@@ -79,20 +89,23 @@ myposts = [
 
   </div>
 
-  <a class="btn btn-large btn-block" href="" id="more" ng-click="before()">MORE</a>
 
+  <a class="btn btn-large btn-block" href="" ng-click="before()" ng-show='showing_more' ng-animate=" 'fade1' ">MORE</a>
+
+
+<div id="bowlG" ng-show='showing_busy'>
+<div id="bowl_ringG">
+<div class="ball_holderG">
+<div class="ballG">
+</div>
+</div>
+</div>
+</div>
 
 
 <footer style="position: fixed;bottom: 0;left: 10px; z-index:2">
 
   <div class="container">
-
-    <%#= form_for(Post.new, format: 'json', html: {'ng-submit'=>"addTodo()"} ) do |f| %>
-    <% if false %>
-      <%= f.text_field :text, autocomplete: 'off' %>
-      <%= f.submit "Executter", class: 'btn btn-executter' %>
-
-    <% end %>
 
     <form accept-charset="UTF-8" id="new_post" ng-submit="submit()">
       <input autocomplete="off" id="post_text" ng-model="new_post.post.text" type="text">
@@ -108,74 +121,3 @@ myposts = [
 </section>
 
 
-
-
-
-
-
-
-
-<% #@posts.each do |post| %>
-<% if false %>
-
-
-
-<!-- 
-<div class="post">
-
-  <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="40"></a>
-  <p class="text">
-    <a href="/edgala">@edgala</a> posted:
-    <a href="/posts/162416-seguindo-o-horoscopo-do-execut">Seguindo o @horoscopo do Executter! :D</a>
-  </p>
-  <input class="reply-trigger" type="text" placeholder="reply...">
-  <div class="reply-box">
-    <textarea rows="2"></textarea>
-    <a href="#" class="btn" onclick="alert('not working yet');$(this).closest('.reply-box').hide('fast')">reply!</a>
-  </div>
-
-  <div class="comments">
-      <div class="comment">
-        <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="25"></a>
-        <p class="text">
-          <a href="/paty">@paty</a> commented:
-          <a href="/comments/13402">:D aaaaae ! </a>
-        </p>
-      </div>
-      <div class="comment">
-        <a class="photo" href="/edgala" style=""><img src="/images/old_default_user_photo/original.png" width="25"></a>
-        <p class="text">
-          <a href="/psicosmile">@psicosmile</a> commented:
-          <a href="/comments/13371">bom para ficar informado heheeheh</a>
-        </p>
-      </div>
-  </div>
-
-</div>
- -->
-  <div class="post">
-    <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=40>}.html_safe, post.site, class: "photo", style: ""  %>
-    <p class="text">
-      <%= link_to post.site.l_, post.site %> posted:
-      <%= link_to post.text, post %>
-    </p>
-    <input class="reply-trigger" type="text" placeholder="reply..." />
-    <div class="reply-box">
-      <textarea rows="2"></textarea>
-      <a href="#" class="btn" onclick="alert('not working yet');$(this).closest('.reply-box').hide('fast')">reply!</a>
-    </div>
-
-    <div class="comments">
-      <% post.comments.each do |comment| %>
-        <div class="comment">
-          <%= link_to %{<img src="/images/old_default_user_photo/original.png" width=25>}.html_safe, post.site, class: "photo", style: ""  %>
-          <p class="text">
-            <%= link_to comment.site.l_, comment.site %> commented:
-            <%= link_to comment.text, comment %>
-          </p>
-        </div>
-      <% end %>
-    </div>
-
-  </div>
-<% end %>
