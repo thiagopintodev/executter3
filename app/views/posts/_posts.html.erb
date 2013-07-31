@@ -1,16 +1,13 @@
 <script type="text/javascript">
-  
-$(function() {
 
-a = [
+myposts = [
 <% @posts.each do |post| %>
   <%= raw render(partial: '/posts/post.json', object: post) %>,
 <% end %>
 ]
-setPosts(a)
 
-})
 </script>
+
 
 <section id="posts" ng-controller="PostsCtrl" data-url="<%= @url %>">
 
@@ -43,7 +40,31 @@ setPosts(a)
 
   </div>
 
-  <%= link_to "MORE", '#', id: 'more', class: 'btn btn-large btn-block' %>
+  <a class="btn btn-large btn-block" href="" id="more" ng-click="before()">MORE</a>
+
+
+
+<footer style="position: fixed;bottom: 0;left: 10px; z-index:2">
+
+  <div class="container">
+
+    <%#= form_for(Post.new, format: 'json', html: {'ng-submit'=>"addTodo()"} ) do |f| %>
+    <% if false %>
+      <%= f.text_field :text, autocomplete: 'off' %>
+      <%= f.submit "Executter", class: 'btn btn-executter' %>
+
+    <% end %>
+
+    <form accept-charset="UTF-8" id="new_post" ng-submit="submit()">
+      <input autocomplete="off" id="post_text" ng-model="new_post.post.text" type="text">
+      <input class="btn btn-executter" type="submit" value="Executter">
+    </form>
+
+  </div>
+
+
+</footer>
+
 
 </section>
 

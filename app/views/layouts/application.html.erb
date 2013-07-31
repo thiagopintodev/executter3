@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app>
+<html>
 <head>
   <title>Ex3</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
@@ -43,20 +43,6 @@
 
 
 
-<footer>
-
-  <div class="container">
-
-    <%= form_for(Post.new, remote: true, format: 'json') do |f| %>
-
-      <%= f.text_field :text, autocomplete: 'off' %>
-      <%= f.submit "Executter", class: 'btn btn-executter' %>
-
-    <% end %>
-
-  </div>
-
-</footer>
 
 <script type="text/javascript">
 
@@ -82,32 +68,6 @@ function ready() {
     $(this).fadeOut().closest('.post').find('.reply-box').fadeIn().find('textarea').focus();
   })
 
-  $('#more').on('click', function() {
-    $('#more').fadeOut('fast');
-    var last_id = $('#posts .post:last p.text').data('id');
-    var url = $('#posts').data('url').replace('xxx', last_id)
-    $.get(url, function(data, textStatus, jqXHR) {
-      appendPosts(data);
-      if (data.length > 0) {
-        $('#more').show();
-      }
-    });
-    return false;
-  });
-
-
-  $("form#new_post").on("ajax:complete", function(e, data) {
-
-    if (data.status == 201) {
-      last =  {e: e, data: data}
-      $(this).find('#post_text').val('').focus()
-      prependPosts([data.responseJSON])
-
-    } else {
-      bad =  {e: e, data: data};
-      alert("an error #"+data.status+" has occurred.\n\n"+data.responseText);
-    }
-  })
 
 }
 
