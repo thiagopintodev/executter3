@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+  def user_online_state(user)
+    if    user.last_activity_at > 5.minutes.ago
+      'online'
+    elsif user.last_activity_at > 30.minutes.ago
+      'afk'
+    elsif user.last_activity_at > 30.days.ago
+      'busy'
+    end
+  end
+
   def render_sign_in_header
     return if me
     return if ['sign_in', 'password'].include?(controller_name)

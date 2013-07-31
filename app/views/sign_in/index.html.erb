@@ -4,7 +4,7 @@
   <div class="form-inputs">
     
     <% if Rails.env.development? %>
-    <%= f.input :email, collection: User.pluck(:email) %>
+    <%= f.input :email, collection: User.pluck(:email).sort %>
     <% else %>
     <%= f.input :email %>
     <% end %>

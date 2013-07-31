@@ -7,6 +7,13 @@ $(document).on('ready page:load', ->
   angular.bootstrap(document, ['YourApplication'])
 
   # setPosts(myposts)
+  $('#users_online a').on('click', ->
+    s = $('#post_text')
+    t = $(this).text().trim();
+    s.val(s.val()+t+' ')
+    s.focus();
+    return false;
+  )
 
 )
 
@@ -73,7 +80,7 @@ $(document).on('ready page:load', ->
     $('body,html').animate({
       scrollTop: 0
     }, 800);
-    
+
     $.post(
       '/posts.json',
       $scope.new_post,

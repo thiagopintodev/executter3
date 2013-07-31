@@ -2,7 +2,6 @@
 <script type="text/javascript">
 
 
-
 <% if false %>
 
 myposts = [
@@ -121,3 +120,11 @@ myposts = [
 </section>
 
 
+<aside id="users_online">
+  <% User.limit(50).order(last_activity_at: :desc).each do |user| %>
+    <%= link_to '#', class: "btn btn-block btn-link #{user_online_state(user)}" do %>
+      <img src="/images/old_default_user_photo/original.png" width="30">
+      <%= user.l_ %>
+    <% end %>
+  <% end %>
+</aside>
