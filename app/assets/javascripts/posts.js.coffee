@@ -15,6 +15,7 @@ $(document).on('ready page:load', ->
 @PostsCtrl = ["$scope", ($scope) ->
   
   $scope.list = []
+  $scope.listSlow = []
 
   $scope.new_post = {post: {text: ''}}
 
@@ -56,7 +57,14 @@ $(document).on('ready page:load', ->
   angular.element('#posts').scope().$apply()
 
 @appendPosts = (a) ->
-  setPosts( getPosts().concat( a ) )
+
+  # angular.forEach(a, (b) ->
+  #   setPosts( getPosts().concat( [b] ) )
+  # );
+  angular.element('#posts').scope().listSlow = a
+  
+
+  #setPosts( getPosts().concat( a ) )
 
 @prependPosts = (a) ->
   setPosts( a.concat( getPosts() ) )
@@ -64,3 +72,9 @@ $(document).on('ready page:load', ->
 @getLastPostId = ->
   getPosts().slice(-1)[0].id
 
+setInterval (->
+  a = angular.element('#posts').scope().listSlow.pop()
+  if a
+    setPosts( getPosts().concat( [a] ) )
+
+), 200
