@@ -44,6 +44,10 @@ Ex3::Application.routes.draw do
   scope ":site_id", as: :site do
     get '' => "sites#show"
     get 'posts' => "sites#posts"
+
+    get 'mentions' => "sites#mentions"
+    get 'mentions_posts' => "sites#mentions_posts"
+
     get 'follow' => "sites#follow"
     get 'unfollow' => "sites#unfollow"
   end

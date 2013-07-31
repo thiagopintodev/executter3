@@ -11,6 +11,8 @@ class SitesController < ApplicationController
   # GET /:link
   def show
     @url = site_posts_path(format: 'json', before_id: 'xxx')
+
+    @background_color = '#1D586D'
     
     #posts
     # @posts = @site.posts.limit(10)
@@ -23,6 +25,28 @@ class SitesController < ApplicationController
     @followings       = @site.following_sites.limit(10)
     @followings_count = @site.followings.count
   end
+
+  # GET /:link/mentions
+  def mentions
+    @url = site_mentions_posts_path(format: 'json', before_id: 'xxx')
+    
+    @background_color = '#1D586D'
+    #posts
+    # @posts = @site.posts.limit(10)
+
+    #@followers
+    @followers        = @site.follower_sites.limit(17)
+    @followers_count  = @site.followers.count
+
+    #@followings
+    @followings       = @site.following_sites.limit(10)
+    @followings_count = @site.followings.count
+    render 'show'
+  end
+
+
+
+
 
   # GET /:link/follow
   def follow
@@ -38,6 +62,12 @@ class SitesController < ApplicationController
 
   # GET /:link/posts.json?before=:before_id
   def posts
+    @posts = @site.posts.limit(10).before(params[:before_id])
+    render '/posts/_posts'
+  end
+
+  # GET /:link/mentions/posts.json?before=:before_id
+  def mentions_posts
     @posts = @site.posts.limit(10).before(params[:before_id])
     render '/posts/_posts'
   end

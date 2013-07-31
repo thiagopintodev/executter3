@@ -24,10 +24,12 @@ body { padding-top: 60px;padding-bottom: 100px; }
 
 
 .container {
-  margin-right: none;
-  margin-left: 25px;
+  margin-right: 0px;
+  margin-left: 50px;
+
   //width: 940px; default
-  width: 840px !important;
+  // width: 840px !important;
+  width: 740px !important;
 }
 
 
@@ -95,8 +97,10 @@ footer {
 
   form#new_post {
     // #post_text { margin-bottom: 0; width: 826px; }
-    #post_text { margin-bottom: 0; width: 726px; }
-    .btn       { width: 90px; float: right; }
+    // #post_text { margin-bottom: 0; width: 726px; }
+    // #post_text { margin-bottom: 0; width: 626px; }
+    #post_text { margin-bottom: 0; width: 600px; }
+    .btn       { width: 90px; float: right; margin-right: 25px; }
   }
 }
 
@@ -164,6 +168,8 @@ aside#users_online {
 
 
 #posts {
+  margin-bottom: 300px;
+
   .post {
     //position: relative;
     //@include clearfix;
@@ -177,6 +183,8 @@ aside#users_online {
     .text {
       width: 600px;
       width: 500px;
+      width: 400px;
+      width: 360px;
       float: left;
       margin-left: 20px;
       min-height: 40px;
@@ -194,6 +202,8 @@ aside#users_online {
       textarea {
         width: 600px;
         width: 500px;
+        width: 400px;
+      width: 360px;
         float: left;
         margin-left: 60px;
       }
@@ -223,6 +233,8 @@ aside#users_online {
       .text {
         width: 600px;
         width: 500px;
+        width: 400px;
+      width: 360px;
         float: left;
         margin-left: 20px;
         min-height: 40px;

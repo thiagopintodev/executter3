@@ -21,29 +21,36 @@ module ApplicationHelper
   end
 
 
-  def render_top_tabs
+  def render_top_tabs_left
     if me.nil?
-      _page_tabs({"Forgot Password?"  => password_forgot_path,
-                  "Sign In"           => sign_in_path,
-                  "Sign Up"           => sign_up_path
-                  })
+      _page_tabs 'left', "<b>Executter</b>"           => sign_up_path
     #elsif me.role.inquiry.admin?
     else
-      _page_tabs({"Home"      => home_path,
-                  me.l_       => site_path(me.site),
-                  "Settings"  => '/',
-                  "Sign Out"  => sign_out_path
-                  })
+      _page_tabs 'left',  "<b>Executter</b>" => home_path,
+                          me.link     => site_path(me.site),
+                          me.l_       => site_mentions_path(me.site)
+    end
+  end
+
+  def render_top_tabs_right
+    if me.nil?
+      _page_tabs 'right', "Forgot Password?"  => password_forgot_path,
+                          "Sign In"           => sign_in_path,
+                          "Sign Up"           => sign_up_path
+    #elsif me.role.inquiry.admin?
+    else
+      _page_tabs 'right', "Settings"  => '/',
+                          "Sign Out"  => sign_out_path
     end
   end
 
 
-  def _page_tabs(tabs)
+  def _page_tabs(position, tabs={})
     lis = tabs.map do |title, url_options|
       css_class = 'active' if current_page?(url_options)
-      content_tag(:li, link_to(title, url_options), class: css_class)
+      content_tag(:li, link_to(title.html_safe, url_options), class: css_class)
     end.join
-    %{<ul class="nav pull-right">#{lis}</ul>}.html_safe
+    %{<ul class="nav pull-#{position}">#{lis}</ul>}.html_safe
   end
 
 

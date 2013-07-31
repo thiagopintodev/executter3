@@ -6,14 +6,17 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body style="background: <%= @background_color || 'white' %>">
 
 
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
+<!-- 
       <a class="brand" href="<%= me ? home_path : sign_up_path %>">Executter</a>
-      <%= render_top_tabs %>
+       -->
+      <%= render_top_tabs_left %>
+      <%= render_top_tabs_right %>
 
       
       <% if false %>
@@ -30,7 +33,8 @@
 </div>
 
 
-<div class="container" style="position: relative">
+<div class="container" style="position: relative;background:#fff;">
+<div style="margin:25px;">
 
   <%= render_sign_in_header %>
 
@@ -39,6 +43,7 @@
 
   <%= yield %>
 
+</div>
 </div>
 
 

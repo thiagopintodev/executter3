@@ -11,6 +11,8 @@ class HomeController < ApplicationController
   def index
     @site = me.site
     @url = home_posts_path(format: 'json', before_id: 'xxx')
+
+    @background_color = '#1D586D'
     
     #posts
     # @posts = @site.followings_posts.limit(10)
@@ -27,7 +29,7 @@ class HomeController < ApplicationController
   # GET /home/posts.json
   def posts
     @site = me.site
-    @posts = @site.posts.limit(10).before(params[:before_id])
+    @posts = @site.followings_posts.limit(10).before(params[:before_id])
     render '/posts/_posts'
   end
 
