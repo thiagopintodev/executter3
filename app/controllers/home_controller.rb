@@ -13,7 +13,7 @@ class HomeController < ApplicationController
     @url = home_posts_path(format: 'json', before_id: 'xxx')
     
     #posts
-    @posts = @site.followings_posts.limit(10)
+    # @posts = @site.followings_posts.limit(10)
 
     #@followers
     @followers        = @site.follower_sites.limit(17)

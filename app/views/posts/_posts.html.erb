@@ -2,15 +2,6 @@
 <script type="text/javascript">
 
 
-<% if false %>
-
-myposts = [
-<% @posts.each do |post| %>
-  <%= raw render(partial: '/posts/post.json', object: post) %>,
-<% end %>
-]
-
-<% end %>
 </script>
 
 
@@ -89,7 +80,7 @@ myposts = [
   </div>
 
 
-  <a class="btn btn-large btn-block" href="" ng-click="before()" ng-show='showing_more' ng-animate=" 'fade1' ">MORE</a>
+  <a class="btn btn-large btn-block" href="" ng-click="before()" ng-show='showing_more' ng-animate=" 'fade1' ">older posts</a>
 
 
 <div id="bowlG" ng-show='showing_busy'>

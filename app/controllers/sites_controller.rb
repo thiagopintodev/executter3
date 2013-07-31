@@ -10,9 +10,10 @@ class SitesController < ApplicationController
 
   # GET /:link
   def show
-    #posts
-    @posts = @site.posts.limit(10)
     @url = site_posts_path(format: 'json', before_id: 'xxx')
+    
+    #posts
+    # @posts = @site.posts.limit(10)
 
     #@followers
     @followers        = @site.follower_sites.limit(17)
