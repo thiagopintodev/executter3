@@ -172,7 +172,7 @@ aside#users_online {
 
   .post {
     //position: relative;
-    //@include clearfix;
+    @include clearfix;
     border-top: 1px solid #e1e1e1;
     padding-top: 10px;
     min-height: 40px;

@@ -16,13 +16,15 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
+      # strategy: user_id
       #@current_user ||= User.find session[:user_id] rescue nil
 
+      # strategy: authentication_token field
       # @current_user ||= (User.find(session[:user_id]) rescue nil).tap do |u|
       #   u = nil if u.try(:authentication_token) != session[:atoken]
       # end
 
-
+      # strategy: authentication_token and last_activity_at fields
       @current_user ||= (User.find(session[:user_id]) rescue nil).tap do |u|
         if u && u.authentication_token == session[:atoken]
           u.update(last_activity_at: Time.now)
